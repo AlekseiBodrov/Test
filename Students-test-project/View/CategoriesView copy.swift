@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class CategoriesView: UIView {
+final class CategoriesView2: UIView {
 
     //MARK: - var\let
     lazy var lineSpacing:CGFloat = 12
@@ -15,7 +15,7 @@ final class CategoriesView: UIView {
 //    let label = UILabel()
     let sublabel = UILabel()
 
-    lazy var categoriesArray = [" IOS ", "Android", "Design", "Flutter", " QA ",  " PM ", " MVP ", "Frontend", "Fullstack", "Backend"]
+    lazy var categoriesArray = [" IOS ", "Android", "Design", " QA ", "Flutter", " PM ", " MVP ", "Frontend", "Fullstack", "Backend"]
 
     lazy var collection: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -37,15 +37,14 @@ final class CategoriesView: UIView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        let size = CGSize(width: bounds.width, height: 70)
+        let size = CGSize(width: bounds.width, height: 240)
         collection.frame = .init(x: 0, y: 140, width: size.width, height: size.height)
     }
 
     //MARK: - flow funcs
     private func setup() {
-        contentMode = .left
-        collection.delegate = self
-        collection.dataSource = self
+//        collection.delegate = self
+//        collection.dataSource = self
         collection.register(CategoriesViewCell.self, forCellWithReuseIdentifier: "CategoriesViewCell")
 
         addSubview(collection)
@@ -79,7 +78,7 @@ final class CategoriesView: UIView {
 }
 
 //MARK: - extension
-extension CategoriesView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension CategoriesView2: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: lineSpacing * 2, bottom: 0, right: lineSpacing * 2)

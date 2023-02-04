@@ -25,6 +25,7 @@ final class CategoriesViewCell: UICollectionViewCell {
         label.text = name
         label.textAlignment = .center
         label.textColor = .black
+        label.font = UIFont(name: "SFProDisplay-Medium", size: 14)
 
         view.backgroundColor = .lightGray
         view.rounded(radius: Constant.radius)
