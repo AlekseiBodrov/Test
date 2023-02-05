@@ -30,12 +30,7 @@
      //MARK: - life cycle funcs
      override func viewDidLoad() {
          super.viewDidLoad()
-         view.addSubview(scrollView)
-         view.addSubview(bottomContainer)
-
-         bottomContainer.delegate = self
-         scrollView.delegate = self
-
+         configure()
          setConstraints()
      }
 
@@ -47,10 +42,22 @@
      override func viewDidLayoutSubviews() {
          super.viewDidLayoutSubviews()
          scrollView.frame = view.bounds
+
+     }
+
+     //MARK: - flow funcs
+     private func configure() {
+         view.addSubview(scrollView)
+         view.addSubview(bottomContainer)
+
+         bottomContainer.delegate = self
+         scrollView.delegate = self
          scrollView.backgroundColor = .red
      }
 
+
      private func setupScrollView() {
+
          var y: CGFloat = 0
 
          y += setupBackgroundImage(coordinateY: y)
@@ -58,7 +65,8 @@
          y += setupDescription(with: Resources.String.Label.firstDescription, coordinateY: y, description: firstDescription)
          y += setupCategoriesView(coordinateY: y)
          y += setupDescription(with: Resources.String.Label.secondDescription, coordinateY: y, description: secondDescription)
-//         y += setupCategoriesView(coordinateY: y)
+         y += setupCategoriesView1(coordinateY: y)
+         y += 500
 
          scrollView.contentSize = .init(width: scrollView.bounds.width, height: y)
          scrollView.showsVerticalScrollIndicator = false
@@ -104,25 +112,41 @@
      }
 
      private func setupDescription(with text: String, coordinateY y: CGFloat, description: DescriptionView) -> CGFloat {
-         let height: CGFloat = 140
+         let height: CGFloat = 70
          description.backgroundColor = .white
          description.setup(with: text)
-         description.frame = .init(x: 0, y: y, width: scrollView.bounds.width, height: 140)
+         description.frame = .init(x: 0, y: y, width: scrollView.bounds.width, height: height)
          scrollView.addSubview(description)
          return height
      }
 
      private func setupCategoriesView(coordinateY y: CGFloat) -> CGFloat {
-         let height: CGFloat = 240
-         scrollView.addSubview(firstСategory)
+         let height: CGFloat = 70
          firstСategory.frame = .init(x: 0, y: y, width: scrollView.bounds.width, height: height)
+         scrollView.addSubview(firstСategory)
          return height
+     }
+
+     private func setupCategoriesView1(coordinateY y: CGFloat) -> CGFloat {
+         let height: CGFloat = 100
+         secondСategory.frame = .init(x: 0, y: y, width: scrollView.bounds.width, height: height)
+         scrollView.addSubview(secondСategory)
+         return height
+     }
+
+     private func showAlert() {
+         let alert = UIAlertController(title: Resources.String.Alert.title,
+                                       message:Resources.String.Alert.message,
+                                       preferredStyle: .alert)
+         let cancel = UIAlertAction(title: Resources.String.Alert.cancel, style: .cancel)
+         alert.addAction(cancel)
+         present(alert, animated: true)
      }
  }
 
  extension ViewController: BottomViewDelegate {
      func dosomthing() {
-         print("dasdasdas")
+         showAlert()
      }
  }
 

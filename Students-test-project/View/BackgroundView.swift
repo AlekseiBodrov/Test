@@ -23,7 +23,6 @@ final class BackgroundView: UIView {
     }
 
     //MARK: - flow funcs
-
     private func setup() {
         backgroundImageView.frame = bounds
         backgroundImageView.translatesAutoresizingMaskIntoConstraints = false

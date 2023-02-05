@@ -8,7 +8,8 @@
 import UIKit
 
 final class CategoriesViewCell: UICollectionViewCell {
-
+    static let identifier = "CategoriesViewCell"
+    
     //MARK: - var\let
     private enum Constant {
         static let radius: CGFloat = .s
@@ -17,7 +18,7 @@ final class CategoriesViewCell: UICollectionViewCell {
     let view = UIView()
     let label = UILabel()
 
-    //MARK: - flow funcs
+    //MARK: - public
     func configure(with name: String) {
         view.addSubview(label)
         contentView.addSubview(view)
@@ -33,7 +34,18 @@ final class CategoriesViewCell: UICollectionViewCell {
         setConstraint()
     }
 
-    func setConstraint() {
+    func didSelectItem() {
+        view.backgroundColor = .darkGray
+        label.textColor = .white
+    }
+
+    func didDeselectItem() {
+        view.backgroundColor = .lightGray
+        label.textColor = .black
+    }
+
+    //MARK: - flow funcs
+    private func setConstraint() {
         view.translatesAutoresizingMaskIntoConstraints = false
         label.translatesAutoresizingMaskIntoConstraints = false
 
@@ -46,16 +58,6 @@ final class CategoriesViewCell: UICollectionViewCell {
         label.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         label.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         label.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-    }
-
-    func didSelectItem() {
-        view.backgroundColor = .darkGray
-        label.textColor = .white
-    }
-
-    func didDeselectItem() {
-        view.backgroundColor = .lightGray
-        label.textColor = .black
     }
 }
 

@@ -25,6 +25,12 @@ enum Resources {
             static let sendButton = "Отправить заявку"
             static let label = "Хочешь к нам?"
         }
+
+        enum Alert {
+            static let title = "Поздравляем!"
+            static let message = "Ваша заявка успешно отправлена!"
+            static let cancel = "Закрыть"
+        }
     }
 
     enum Fonts {

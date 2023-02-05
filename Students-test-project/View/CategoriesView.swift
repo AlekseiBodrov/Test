@@ -10,11 +10,6 @@ import UIKit
 final class CategoriesView: UIView {
 
     //MARK: - var\let
-    lazy var lineSpacing:CGFloat = 12
-
-//    let label = UILabel()
-    let sublabel = UILabel()
-
     lazy var categoriesArray = [" IOS ", "Android", "Design", "Flutter", " QA ",  " PM ", " MVP ", "Frontend", "Fullstack", "Backend"]
 
     lazy var collection: UICollectionView = {
@@ -37,8 +32,7 @@ final class CategoriesView: UIView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        let size = CGSize(width: bounds.width, height: 70)
-        collection.frame = .init(x: 0, y: 140, width: size.width, height: size.height)
+        collection.frame = .init(x: 0, y: 0, width: bounds.size.width, height: bounds.size.height)
     }
 
     //MARK: - flow funcs
@@ -46,18 +40,13 @@ final class CategoriesView: UIView {
         contentMode = .left
         collection.delegate = self
         collection.dataSource = self
-        collection.register(CategoriesViewCell.self, forCellWithReuseIdentifier: "CategoriesViewCell")
+        collection.register(CategoriesViewCell.self, forCellWithReuseIdentifier: CategoriesViewCell.identifier)
 
         addSubview(collection)
-//        label.backgroundColor = .white
-        sublabel.backgroundColor = .white
         collection.backgroundColor = .white
-
-        let width = ""
     }
 
     private func setConstraints() {
-        sublabel.translatesAutoresizingMaskIntoConstraints = false
         collection.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
@@ -82,11 +71,11 @@ final class CategoriesView: UIView {
 extension CategoriesView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: lineSpacing * 2, bottom: 0, right: lineSpacing * 2)
+        return UIEdgeInsets(top: 0, left: .mplus, bottom: 0, right: 0)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return lineSpacing
+        return .s
     }
 
     func getTextWidth(_ string: String) -> CGFloat {
@@ -109,7 +98,7 @@ extension CategoriesView: UICollectionViewDelegate, UICollectionViewDataSource, 
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoriesViewCell", for: indexPath) as? CategoriesViewCell else {return UICollectionViewCell()}
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoriesViewCell.identifier, for: indexPath) as? CategoriesViewCell else {return UICollectionViewCell()}
         cell.configure(with: categoriesArray[indexPath.item])
         return cell
     }
