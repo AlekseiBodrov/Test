@@ -8,7 +8,7 @@
 import UIKit
 
 protocol BottomViewDelegate: AnyObject {
-    func dosomthing()
+    func didTapSendButton()
 }
 
 final class BottomView: UIView {
@@ -22,8 +22,8 @@ final class BottomView: UIView {
     //MARK: - life cycle funcs
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addViews()
-        layoutViews()
+        addView()
+        layoutView()
         configure()
     }
 
@@ -35,12 +35,12 @@ final class BottomView: UIView {
 private extension BottomView {
 
     //MARK: - flow funcs
-    func addViews() {
+    func addView() {
         addSubview(textLabel)
         addSubview(sendButton)
     }
 
-    func layoutViews() {
+    func layoutView() {
         NSLayoutConstraint.activate([
             sendButton.trailingAnchor.constraint(equalTo: trailingAnchor),
             sendButton.bottomAnchor.constraint(equalTo: bottomAnchor),
@@ -56,20 +56,20 @@ private extension BottomView {
     func configure() {
 
         sendButton.translatesAutoresizingMaskIntoConstraints = false
-        sendButton.rounded(radius: .xl)
+        sendButton.rounded(radius: 30)
         sendButton.backgroundColor = .darkGray
         sendButton.setTitle(Resources.String.BottomView.sendButton, for: .normal)
-        sendButton.titleLabel?.font = UIFont(name: "SFProDisplay-Medium", size: .m)
+        sendButton.titleLabel?.font = Resources.Fonts.sfProDisplayMedium(with: .m)
         sendButton.addTarget(self, action: #selector(tuchDetected), for: .touchUpInside)
 
         textLabel.translatesAutoresizingMaskIntoConstraints = false
         textLabel.text = Resources.String.BottomView.label
-        textLabel.font = UIFont(name: "SFProDisplay-Regular", size: .splus)
+        textLabel.font = Resources.Fonts.sfProDisplayRegular(with: .splus)
         textLabel.textColor = .gray
     }
 
     @objc func tuchDetected() {
-        delegate?.dosomthing()
+        delegate?.didTapSendButton()
         print(#function)
     }
 }

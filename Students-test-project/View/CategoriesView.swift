@@ -10,7 +10,7 @@ import UIKit
 final class CategoriesView: UIView {
 
     //MARK: - var\let
-    lazy var categoriesArray = [" IOS ", "Android", "Design", "Flutter", " QA ",  " PM ", " MVP ", "Frontend", "Fullstack", "Backend"]
+    lazy var categoriesArray = [""]
 
     lazy var collection: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -23,7 +23,9 @@ final class CategoriesView: UIView {
     //MARK: - life cycle funcs
     override init(frame: CGRect) {
         super.init(frame: frame)
+
         setup()
+
     }
 
     required init?(coder: NSCoder) {
@@ -44,26 +46,6 @@ final class CategoriesView: UIView {
 
         addSubview(collection)
         collection.backgroundColor = .white
-    }
-
-    private func setConstraints() {
-        collection.translatesAutoresizingMaskIntoConstraints = false
-
-        NSLayoutConstraint.activate([
-
-//            label.topAnchor.constraint(equalTo: stack.topAnchor, constant: 24),
-//            label.leadingAnchor.constraint(equalTo: stack.leadingAnchor, constant: 24),
-
-//            bottomLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constant.padding),
-//            bottomLabel.centerYAnchor.constraint(equalTo: bottomButton.centerYAnchor),
-//            bottomLabel.heightAnchor.constraint(equalToConstant: 20),
-//
-//            bottomButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constant.padding),
-//            bottomButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -Constant.paddingBottom),
-//            bottomButton.heightAnchor.constraint(equalToConstant: 60),
-//            bottomButton.leadingAnchor.constraint(equalTo: bottomLabel.trailingAnchor, constant: 24),
-
-        ])
     }
 }
 
@@ -117,6 +99,10 @@ extension CategoriesView: UICollectionViewDelegate, UICollectionViewDataSource, 
         if let cell = collectionView.cellForItem(at: indexPath) as? CategoriesViewCell {
             cell.didDeselectItem()
         }
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didEndDisplayingSupplementaryView view: UICollectionReusableView, forElementOfKind elementKind: String, at indexPath: IndexPath) {
+        
     }
 
 }

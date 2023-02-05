@@ -28,7 +28,7 @@ final class DescriptionView: UIView {
     //MARK: - flow funcs
     private func configure() {
         titleLabel.textAlignment = .left
-        titleLabel.font = UIFont(name: "SFProDisplay-Regular", size: .splus)
+        titleLabel.font = Resources.Fonts.sfProDisplayRegular(with: .splus)
         titleLabel.numberOfLines = 0
         titleLabel.textColor = .gray
         titleLabel.backgroundColor = .white

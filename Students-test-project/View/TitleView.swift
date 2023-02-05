@@ -31,7 +31,7 @@ final class TitleView: UIView {
     private func configure() {
 
         titleLabel.textAlignment = .left
-        titleLabel.font = UIFont(name: "SFProDisplay-Bold", size: .l)
+        titleLabel.font = Resources.Fonts.sfProDisplayBold(with: .l)
 
         backgroundColor = .white
 
