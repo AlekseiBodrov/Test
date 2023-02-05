@@ -11,7 +11,7 @@ final class CategoriesViewCell: UICollectionViewCell {
 
     //MARK: - var\let
     private enum Constant {
-        static let radius: CGFloat = 12
+        static let radius: CGFloat = .s
     }
 
     let view = UIView()
@@ -25,7 +25,7 @@ final class CategoriesViewCell: UICollectionViewCell {
         label.text = name
         label.textAlignment = .center
         label.textColor = .black
-        label.font = UIFont(name: "SFProDisplay-Medium", size: 14)
+        label.font = UIFont(name: "SFProDisplay-Medium", size: .splus)
 
         view.backgroundColor = .lightGray
         view.rounded(radius: Constant.radius)

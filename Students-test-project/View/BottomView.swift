@@ -49,22 +49,22 @@ private extension BottomView {
             textLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             textLabel.centerYAnchor.constraint(equalTo: sendButton.centerYAnchor),
             textLabel.heightAnchor.constraint(equalToConstant: 20),
-            textLabel.trailingAnchor.constraint(equalTo: sendButton.leadingAnchor, constant: -24),
+            textLabel.trailingAnchor.constraint(equalTo: sendButton.leadingAnchor, constant: -.l),
         ])
     }
 
     func configure() {
 
         sendButton.translatesAutoresizingMaskIntoConstraints = false
-        sendButton.rounded(radius: 30)
+        sendButton.rounded(radius: .xl)
         sendButton.backgroundColor = .darkGray
         sendButton.setTitle(Resources.String.BottomView.sendButton, for: .normal)
-        sendButton.titleLabel?.font = UIFont(name: "SFProDisplay-Medium", size: 16)
+        sendButton.titleLabel?.font = UIFont(name: "SFProDisplay-Medium", size: .m)
         sendButton.addTarget(self, action: #selector(tuchDetected), for: .touchUpInside)
 
         textLabel.translatesAutoresizingMaskIntoConstraints = false
         textLabel.text = Resources.String.BottomView.label
-        textLabel.font = UIFont(name: "SFProDisplay-Regular", size: 14)
+        textLabel.font = UIFont(name: "SFProDisplay-Regular", size: .splus)
         textLabel.textColor = .gray
     }
 

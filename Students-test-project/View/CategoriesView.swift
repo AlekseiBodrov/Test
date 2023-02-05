@@ -92,7 +92,7 @@ extension CategoriesView: UICollectionViewDelegate, UICollectionViewDataSource, 
     func getTextWidth(_ string: String) -> CGFloat {
         let rect = string.boundingRect(with: CGSize(width: 0, height: 0),
                                        options: .usesFontLeading,
-                                       attributes: [.font: UIFont.systemFont(ofSize: 32)],
+                                       attributes: [.font: UIFont.systemFont(ofSize: .xl)],
                                        context: nil).size
         return rect.width
     }

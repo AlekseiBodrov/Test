@@ -10,11 +10,6 @@ import UIKit
 final class DescriptionView: UIView {
 
     //MARK: - let/var
-    private enum Constant {
-        static let topPadding: CGFloat = 12
-        static let padding: CGFloat = 20
-    }
-
     let titleLabel = UILabel()
 
     //MARK: - life cycle funcs
@@ -31,13 +26,9 @@ final class DescriptionView: UIView {
     }
 
     //MARK: - flow funcs
-    func setup(with text: String) {
-        titleLabel.text = text
-    }
-
     private func configure() {
         titleLabel.textAlignment = .left
-        titleLabel.font = UIFont(name: "SFProDisplay-Regular", size: 14)
+        titleLabel.font = UIFont(name: "SFProDisplay-Regular", size: .splus)
         titleLabel.numberOfLines = 0
         titleLabel.textColor = .gray
         titleLabel.backgroundColor = .white
@@ -47,9 +38,14 @@ final class DescriptionView: UIView {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: Constant.topPadding),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constant.padding),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constant.padding),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: .s),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mplus),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mplus),
         ])
+    }
+
+    //MARK: - public
+    func setup(with text: String) {
+        titleLabel.text = text
     }
 }

@@ -19,8 +19,10 @@
      private let bottomContainer = BottomView()
 
      private let backgroundImage = BackgroundView()
-     private let category = CategoriesView()
      private let titleLabel = TitleView()
+
+     private let firstСategory = CategoriesView()
+     private let secondСategory = CategoriesView()
 
      private let firstDescription = DescriptionView()
      private let secondDescription = DescriptionView()
@@ -30,8 +32,6 @@
          super.viewDidLoad()
          view.addSubview(scrollView)
          view.addSubview(bottomContainer)
-
-
 
          bottomContainer.delegate = self
          scrollView.delegate = self
@@ -66,6 +66,7 @@
 
      private func setConstraints() {
          scrollView.translatesAutoresizingMaskIntoConstraints = false
+         bottomContainer.translatesAutoresizingMaskIntoConstraints = false
 
          NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -75,10 +76,9 @@
          ])
 
          NSLayoutConstraint.activate([
-
-             bottomContainer.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constant.padding),
-             bottomContainer.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constant.padding),
-             bottomContainer.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -Constant.paddingBottom),
+            bottomContainer.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constant.padding),
+            bottomContainer.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constant.padding),
+            bottomContainer.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -Constant.paddingBottom),
          ])
      }
 
@@ -114,8 +114,8 @@
 
      private func setupCategoriesView(coordinateY y: CGFloat) -> CGFloat {
          let height: CGFloat = 240
-         scrollView.addSubview(category)
-         category.frame = .init(x: 0, y: y, width: scrollView.bounds.width, height: height)
+         scrollView.addSubview(firstСategory)
+         firstСategory.frame = .init(x: 0, y: y, width: scrollView.bounds.width, height: height)
          return height
      }
  }
