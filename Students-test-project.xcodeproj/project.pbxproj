@@ -61,6 +61,68 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D7CF71622995397D00B00550 /* MainModule */ = {
+			isa = PBXGroup;
+			children = (
+				D7CF716529953A3800B00550 /* View */,
+				D7CF716429953A2200B00550 /* Presenter */,
+			);
+			path = MainModule;
+			sourceTree = "<group>";
+		};
+		D7CF716429953A2200B00550 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				D7CF71602994DADE00B00550 /* MainPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		D7CF716529953A3800B00550 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D7CF516429941080006A3C2F /* MainViewController.swift */,
+				D7CF716629953A4F00B00550 /* Subviews */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D7CF716629953A4F00B00550 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				D7CF516629941BB0006A3C2F /* MainView.swift */,
+				D7CF716829953A8900B00550 /* MainViewHeader */,
+				D7CF716929953AA800B00550 /* View */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
+		D7CF716729953A6B00B00550 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				D7CF715C2994CB8300B00550 /* MainCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		D7CF716829953A8900B00550 /* MainViewHeader */ = {
+			isa = PBXGroup;
+			children = (
+				D7CF71582994AFDC00B00550 /* MainViewHeader.swift */,
+			);
+			path = MainViewHeader;
+			sourceTree = "<group>";
+		};
+		D7CF716929953AA800B00550 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D7CF715E2994D19100B00550 /* MainCategoriesView.swift */,
+				D7CF715A2994B91300B00550 /* MainDescriptionView.swift */,
+				D7CF716729953A6B00B00550 /* Cell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		D7F18C74298D2A6100695AE1 = {
 			isa = PBXGroup;
 			children = (
@@ -84,13 +146,7 @@
 				D7F18C96298D2ED000695AE1 /* Helper */,
 				D7F18C95298D2BAB00695AE1 /* Application */,
 				D7F18C94298D2B9B00695AE1 /* SupportingFile */,
-				D7CF71602994DADE00B00550 /* MainPresenter.swift */,
-				D7CF516429941080006A3C2F /* MainViewController.swift */,
-				D7CF516629941BB0006A3C2F /* MainView.swift */,
-				D7CF71582994AFDC00B00550 /* MainViewHeader.swift */,
-				D7CF715A2994B91300B00550 /* MainDescriptionView.swift */,
-				D7CF715C2994CB8300B00550 /* MainCollectionViewCell.swift */,
-				D7CF715E2994D19100B00550 /* MainCategoriesView.swift */,
+				D7CF71622995397D00B00550 /* MainModule */,
 			);
 			path = "Students-test-project";
 			sourceTree = "<group>";
