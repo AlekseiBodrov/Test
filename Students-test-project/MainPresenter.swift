@@ -1,14 +1,13 @@
 //
-//  Presenter.swift
+//  MainPresenter.swift
 //  Students-test-project
 //
-//  Created by Алексей on 05.02.2023.
+//  Created by Алексей on 09.02.2023.
 //
+import Foundation
 
-import UIKit
-
-protocol MainPresenterDelegate: AnyObject {
-    func presentBackgroundImage(image: UIImage)
+protocol MainPresenterProtocol: AnyObject {
+    func presentBackgroundImage(with name: String)
     func presentTitleLabel(title: String)
     func presentFirstDescription(text: String)
     func presentSecondDescription(text: String)
@@ -16,7 +15,7 @@ protocol MainPresenterDelegate: AnyObject {
     func presentAlert()
 }
 
-typealias PresenterDelegate = MainPresenterDelegate & UIViewController
+typealias PresenterDelegate = MainPresenterProtocol
 
 final class MainPresenter {
 
@@ -29,12 +28,12 @@ final class MainPresenter {
     }
 
     func getBackgroundImage() {
-        guard let image = Resources.Images.background else { return }
-        delegate?.presentBackgroundImage(image: image)
+        let name = Resources.Images.background
+        delegate?.presentBackgroundImage(with: name)
     }
 
     func getTitleLabel() {
-        let title = Resources.String.Alert.title
+        let title = Resources.String.Label.titleLabel
         delegate?.presentTitleLabel(title: title)
     }
 
@@ -47,20 +46,16 @@ final class MainPresenter {
         let text = Resources.String.Label.secondDescription
         delegate?.presentSecondDescription(text: text)
     }
-    
+
     func getСategories() {
-        let categoriesArray = [" IOS ", "Android", "Design", "Flutter", " QA ",  " PM ", " MVP ", "Frontend", "Fullstack", "Backend"]
+        var categoriesArray: [String] = []
+            Category.allCases.forEach {
+            categoriesArray.append($0.rawValue)
+        }
         delegate?.presentСategories(category: categoriesArray)
     }
 
     func didTapSendButton() {
-        let title = Resources.String.Alert.title
-        let message = Resources.String.Alert.message
-        let cancelTitle = Resources.String.Alert.cancel
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: cancelTitle, style: .cancel)
-        alertController.addAction(cancelAction)
-        delegate?.present(alertController, animated: true)
+        delegate?.presentAlert()
     }
 }
-

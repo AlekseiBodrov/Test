@@ -1,22 +1,20 @@
 //
-//  DescriptionView.swift
+//  MainDescriptionView.swift
 //  Students-test-project
 //
-//  Created by Алексей on 04.02.2023.
+//  Created by Алексей on 09.02.2023.
 //
 
 import UIKit
 
-final class DescriptionView: UIView {
+final class MainDescriptionView: UIView {
 
     //MARK: - let/var
-    let titleLabel = UILabel()
+    private lazy var titleLabel = UILabel()
 
-    //MARK: - life cycle funcs
+    // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addSubview(titleLabel)
-
         configure()
         setConstraints()
     }
@@ -27,16 +25,21 @@ final class DescriptionView: UIView {
 
     //MARK: - flow funcs
     private func configure() {
+//        titleLabel.frame = bounds
+
         titleLabel.textAlignment = .left
         titleLabel.font = Resources.Fonts.sfProDisplayRegular(with: .splus)
         titleLabel.numberOfLines = 0
         titleLabel.textColor = .gray
         titleLabel.backgroundColor = .white
-    }
 
-    private func setConstraints() {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
 
+        addSubview(titleLabel)
+    }
+
+ 
+    private func setConstraints() {
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: .s),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mplus),
@@ -45,7 +48,7 @@ final class DescriptionView: UIView {
     }
 
     //MARK: - public
-    func setup(with text: String) {
+    func setupTitle(with text: String) {
         titleLabel.text = text
     }
 }

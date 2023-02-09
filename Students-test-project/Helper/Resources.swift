@@ -10,7 +10,7 @@ import UIKit
 enum Resources {
 
     enum Images {
-        static let background = UIImage(named: "mountains")
+        static let background = "mountains"
     }
 
     enum String {
@@ -44,4 +44,17 @@ enum Resources {
             UIFont(name: "SFProDisplay-Medium", size: size) ?? UIFont()
         }
     }
+}
+
+enum Category: String, CaseIterable {
+    case IOS
+    case Android
+    case Design
+    case QA
+    case Flutter
+    case PM
+    case MVP
+    case Frontend
+    case Fullstack
+    case Backend
 }

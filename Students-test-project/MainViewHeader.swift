@@ -1,18 +1,18 @@
 //
-//  TitleView.swift
+//  MainViewHeader.swift
 //  Students-test-project
 //
-//  Created by Алексей on 04.02.2023.
+//  Created by Алексей on 09.02.2023.
 //
 
 import UIKit
 
-final class TitleView: UIView {
+final class MainViewHeader: UIView {
 
-    //MARK: - var\let
-    let titleLabel = UILabel()
+    //MARK: - let/var
+    lazy var titleLabel = UILabel()
 
-    //MARK: - life cycle funcs
+    // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -24,27 +24,25 @@ final class TitleView: UIView {
     }
 
     //MARK: - flow funcs
-    func setup(with text: String) {
-        titleLabel.text = text
-    }
-
     private func configure() {
-
         titleLabel.textAlignment = .left
         titleLabel.font = Resources.Fonts.sfProDisplayBold(with: .l)
-
-        backgroundColor = .white
+        titleLabel.textColor = .black
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
 
         addSubview(titleLabel)
     }
 
     private func setConstraints() {
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: .l),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mplus),
             titleLabel.heightAnchor.constraint(equalToConstant: .xl),
         ])
+    }
+
+    //MARK: - public
+    func setupTitle(with text: String) {
+        titleLabel.text = text
     }
 }
