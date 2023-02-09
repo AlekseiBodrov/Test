@@ -44,6 +44,8 @@ final class MainViewController: UIViewController {
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        setupScrollView()
+
         MainViewSizeConstants.heightSafeAria = view.safeAreaLayoutGuide.layoutFrame.height
     }
     override func viewWillLayoutSubviews() {
@@ -53,7 +55,7 @@ final class MainViewController: UIViewController {
 
     //MARK: - flow funcs
     private func configure() {
-        configureScrollView()
+        addSubViews()
         configureBaseView()
         configureBackgroundImageView()
         configureMainView()
@@ -104,23 +106,27 @@ final class MainViewController: UIViewController {
         ])
     }
 
-    private func configureScrollView() {
+    private func addSubViews() {
+        view.addSubview(scrollView)
+        view.addSubview(bottomLabel)
+        view.addSubview(sendButton)
+        scrollView.addSubview(baseView)
+        baseView.addSubview(backgroundImageView)
+        baseView.addSubview(mainView)
+    }
+
+    private func setupScrollView() {
         scrollView.bounces = false
         scrollView.backgroundColor = .white
         scrollView.showsVerticalScrollIndicator = false
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.contentInsetAdjustmentBehavior = .never
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-
-        view.addSubview(scrollView)
-
         view.backgroundColor = .white
     }
 
     private func configureBaseView() {
         baseView.translatesAutoresizingMaskIntoConstraints = false
-
-        scrollView.addSubview(baseView)
         baseView.backgroundColor = .white
     }
 
@@ -131,8 +137,6 @@ final class MainViewController: UIViewController {
         backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
 
         setBackgroundImage(image: UIImage(named: "mountains")!)
-
-        baseView.addSubview(backgroundImageView)
     }
 
     private func configureMainView() {
@@ -141,8 +145,6 @@ final class MainViewController: UIViewController {
         presentSecondDescription(text: Resources.String.Label.secondDescription)
 
         mainView.translatesAutoresizingMaskIntoConstraints = false
-
-        baseView.addSubview(mainView)
     }
 
     private func configureBottomLabel() {
@@ -150,7 +152,6 @@ final class MainViewController: UIViewController {
         bottomLabel.text = Resources.String.BottomView.label
         bottomLabel.font = Resources.Fonts.sfProDisplayRegular(with: .splus)
         bottomLabel.textColor = .gray
-        view.addSubview(bottomLabel)
     }
 
     private func configureSendButton() {
@@ -160,7 +161,6 @@ final class MainViewController: UIViewController {
         sendButton.setTitle(Resources.String.BottomView.sendButton, for: .normal)
         sendButton.titleLabel?.font = Resources.Fonts.sfProDisplayMedium(with: .m)
         sendButton.addTarget(self, action: #selector(tuchDetected), for: .touchUpInside)
-        view.addSubview(sendButton)
     }
 
     @objc func tuchDetected() {
