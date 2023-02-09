@@ -36,13 +36,13 @@ final class MainCollectionViewCell: UICollectionViewCell {
     }
 
     func didSelectItem() {
-        backgroundColor = .darkGray
-        label.textColor = .white
+        backgroundColor = .secondaryColor
+        label.textColor = .mainColor
     }
 
     func didDeselectItem() {
-        backgroundColor = .lightGray
-        label.textColor = .black
+        backgroundColor = .lightSecondaryColor
+        label.textColor = .secondaryColor
     }
 }
 
@@ -51,11 +51,11 @@ extension MainCollectionViewCell {
     //MARK: - flow funcs
     private func configure() {
         label.textAlignment = .center
-        label.textColor = .black
+        label.textColor = .secondaryColor
         label.font = Resources.Fonts.sfProDisplayMedium(with: .splus)
         label.translatesAutoresizingMaskIntoConstraints = false
 
-        backgroundColor = .lightGray
+        backgroundColor = .lightSecondaryColor
         rounded(radius: Constant.radius)
 
         contentView.addSubview(label)

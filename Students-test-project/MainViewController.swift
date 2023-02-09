@@ -117,17 +117,17 @@ final class MainViewController: UIViewController {
 
     private func setupScrollView() {
         scrollView.bounces = false
-        scrollView.backgroundColor = .white
+        scrollView.backgroundColor = .mainColor
         scrollView.showsVerticalScrollIndicator = false
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.contentInsetAdjustmentBehavior = .never
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .white
+        view.backgroundColor = .mainColor
     }
 
     private func configureBaseView() {
         baseView.translatesAutoresizingMaskIntoConstraints = false
-        baseView.backgroundColor = .white
+        baseView.backgroundColor = .mainColor
     }
 
     private func configureBackgroundImageView() {
@@ -151,13 +151,13 @@ final class MainViewController: UIViewController {
         bottomLabel.translatesAutoresizingMaskIntoConstraints = false
         bottomLabel.text = Resources.String.BottomView.label
         bottomLabel.font = Resources.Fonts.sfProDisplayRegular(with: .splus)
-        bottomLabel.textColor = .gray
+        bottomLabel.textColor = .secondaryTextColor
     }
 
     private func configureSendButton() {
         sendButton.translatesAutoresizingMaskIntoConstraints = false
         sendButton.rounded(radius: 30)
-        sendButton.backgroundColor = .darkGray
+        sendButton.backgroundColor = .secondaryColor
         sendButton.setTitle(Resources.String.BottomView.sendButton, for: .normal)
         sendButton.titleLabel?.font = Resources.Fonts.sfProDisplayMedium(with: .m)
         sendButton.addTarget(self, action: #selector(tuchDetected), for: .touchUpInside)

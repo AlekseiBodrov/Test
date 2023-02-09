@@ -30,8 +30,8 @@ final class MainDescriptionView: UIView {
         titleLabel.textAlignment = .left
         titleLabel.font = Resources.Fonts.sfProDisplayRegular(with: .splus)
         titleLabel.numberOfLines = 0
-        titleLabel.textColor = .gray
-        titleLabel.backgroundColor = .white
+        titleLabel.textColor = .secondaryTextColor
+        titleLabel.backgroundColor = .mainColor
 
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
 
@@ -41,7 +41,7 @@ final class MainDescriptionView: UIView {
  
     private func setConstraints() {
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: .s),
+            titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mplus),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.mplus),
         ])

@@ -27,7 +27,7 @@ final class MainViewHeader: UIView {
     private func configure() {
         titleLabel.textAlignment = .left
         titleLabel.font = Resources.Fonts.sfProDisplayBold(with: .l)
-        titleLabel.textColor = .black
+        titleLabel.textColor = .secondaryColor
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
 
         addSubview(titleLabel)
@@ -35,9 +35,9 @@ final class MainViewHeader: UIView {
 
     private func setConstraints() {
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: .l),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mplus),
-            titleLabel.heightAnchor.constraint(equalToConstant: .xl),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: .mplus),
+            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
     }
 

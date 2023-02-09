@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		D7716132298FA4DC00D86F74 /* Spacing+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7716131298FA4DC00D86F74 /* Spacing+Extension.swift */; };
-		D77205F12993829200E0B4BE /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77205F02993829200E0B4BE /* Reusable.swift */; };
 		D7CF516529941080006A3C2F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CF516429941080006A3C2F /* MainViewController.swift */; };
 		D7CF516729941BB0006A3C2F /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CF516629941BB0006A3C2F /* MainView.swift */; };
 		D7CF71592994AFDC00B00550 /* MainViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CF71582994AFDC00B00550 /* MainViewHeader.swift */; };
@@ -30,7 +29,6 @@
 
 /* Begin PBXFileReference section */
 		D7716131298FA4DC00D86F74 /* Spacing+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Spacing+Extension.swift"; sourceTree = "<group>"; };
-		D77205F02993829200E0B4BE /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		D7CF516429941080006A3C2F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		D7CF516629941BB0006A3C2F /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		D7CF71582994AFDC00B00550 /* MainViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewHeader.swift; sourceTree = "<group>"; };
@@ -141,7 +139,6 @@
 				D7F18C97298D2EDD00695AE1 /* UIView+Extension.swift */,
 				D7F18C9B298D32F600695AE1 /* UIColor+Extension.swift */,
 				D7716131298FA4DC00D86F74 /* Spacing+Extension.swift */,
-				D77205F02993829200E0B4BE /* Reusable.swift */,
 			);
 			path = Extantion;
 			sourceTree = "<group>";
@@ -229,7 +226,6 @@
 				D7CF71592994AFDC00B00550 /* MainViewHeader.swift in Sources */,
 				D7F18C9C298D32F600695AE1 /* UIColor+Extension.swift in Sources */,
 				D7CF71612994DADE00B00550 /* MainPresenter.swift in Sources */,
-				D77205F12993829200E0B4BE /* Reusable.swift in Sources */,
 				D7716132298FA4DC00D86F74 /* Spacing+Extension.swift in Sources */,
 				D7CF516529941080006A3C2F /* MainViewController.swift in Sources */,
 				D7CF715F2994D19100B00550 /* MainCategoriesView.swift in Sources */,

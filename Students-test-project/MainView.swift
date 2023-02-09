@@ -39,7 +39,7 @@ final class MainView: UIView {
     }
 
     private func configureHeaderView() {
-        headerView.backgroundColor = .white
+        headerView.backgroundColor = .mainColor
         headerView.layer.cornerRadius = 32
         headerView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         headerView.translatesAutoresizingMaskIntoConstraints = false
@@ -49,7 +49,7 @@ final class MainView: UIView {
 
     private func configureDescriptionView1() {
         descriptionView1.translatesAutoresizingMaskIntoConstraints = false
-        descriptionView1.backgroundColor = .systemPink
+        descriptionView1.backgroundColor = .mainColor
 
         addSubview(descriptionView1)
     }
@@ -107,22 +107,22 @@ final class MainView: UIView {
             headerView.topAnchor.constraint(equalTo: topAnchor),
             headerView.leadingAnchor.constraint(equalTo: leadingAnchor),
             headerView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            headerView.heightAnchor.constraint(equalToConstant: 100),
+            headerView.heightAnchor.constraint(equalToConstant: 56),
 
             descriptionView1.topAnchor.constraint(equalTo: headerView.bottomAnchor),
             descriptionView1.leadingAnchor.constraint(equalTo: leadingAnchor),
             descriptionView1.trailingAnchor.constraint(equalTo: trailingAnchor),
-            descriptionView1.heightAnchor.constraint(equalToConstant: 70),
+            descriptionView1.heightAnchor.constraint(equalToConstant: 84),
 
             collectionView1.topAnchor.constraint(equalTo: descriptionView1.bottomAnchor),
             collectionView1.leadingAnchor.constraint(equalTo: leadingAnchor),
             collectionView1.trailingAnchor.constraint(equalTo: trailingAnchor),
-            collectionView1.heightAnchor.constraint(equalToConstant: 70),
+            collectionView1.heightAnchor.constraint(equalToConstant: 44),
 
             descriptionView2.topAnchor.constraint(equalTo: collectionView1.bottomAnchor),
             descriptionView2.leadingAnchor.constraint(equalTo: leadingAnchor),
             descriptionView2.trailingAnchor.constraint(equalTo: trailingAnchor),
-            descriptionView2.heightAnchor.constraint(equalToConstant: 50),
+            descriptionView2.heightAnchor.constraint(equalToConstant: 64),
 
             collectionView2.topAnchor.constraint(equalTo: descriptionView2.bottomAnchor),
             collectionView2.leadingAnchor.constraint(equalTo: leadingAnchor),

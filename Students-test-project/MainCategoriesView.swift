@@ -43,7 +43,7 @@ final class CategoriesView: UIView {
         collection.register(MainCollectionViewCell.self, forCellWithReuseIdentifier: MainCollectionViewCell.identifier)
 
         addSubview(collection)
-        collection.backgroundColor = .white
+        collection.backgroundColor = .mainColor
         collection.clipsToBounds = false
     }
 }
