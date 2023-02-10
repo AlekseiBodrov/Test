@@ -45,16 +45,3 @@ enum Resources {
         }
     }
 }
-
-enum Category: String, CaseIterable {
-    case IOS
-    case Android
-    case Design
-    case QA
-    case Flutter
-    case PM
-    case MVP
-    case Frontend
-    case Fullstack
-    case Backend
-}

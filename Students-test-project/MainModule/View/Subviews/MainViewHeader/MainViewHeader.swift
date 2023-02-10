@@ -16,11 +16,15 @@ final class MainViewHeader: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
-        setConstraints()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        setConstraints()
     }
 
     //MARK: - flow funcs
@@ -33,7 +37,7 @@ final class MainViewHeader: UIView {
         addSubview(titleLabel)
     }
 
-    private func setConstraints() {
+    func setConstraints() {
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mplus),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: .mplus),

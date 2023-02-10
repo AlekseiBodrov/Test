@@ -51,6 +51,10 @@ final class MainViewController: UIViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         setConstraints()
+        mainView.setConstraints()
+        mainView.headerView.setConstraints()
+        mainView.descriptionView1.setConstraints()
+        mainView.descriptionView2.setConstraints()
     }
 
     //MARK: - flow funcs
@@ -73,7 +77,7 @@ final class MainViewController: UIViewController {
     private func setConstraints() {
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: view.topAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: sendButton.topAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 
@@ -91,7 +95,7 @@ final class MainViewController: UIViewController {
             mainView.leadingAnchor.constraint(equalTo: baseView.leadingAnchor),
             mainView.trailingAnchor.constraint(equalTo: baseView.trailingAnchor),
             mainView.bottomAnchor.constraint(equalTo: baseView.bottomAnchor),
-            mainView.heightAnchor.constraint(equalToConstant: MainViewSizeConstants.heightSafeAria - 50),
+            mainView.heightAnchor.constraint(equalToConstant: MainViewSizeConstants.heightSafeAria - 70),
         ])
 
         NSLayoutConstraint.activate([
@@ -107,6 +111,8 @@ final class MainViewController: UIViewController {
     }
 
     private func addSubViews() {
+        view.backgroundColor = .mainColor
+
         view.addSubview(scrollView)
         view.addSubview(bottomLabel)
         view.addSubview(sendButton)
@@ -116,13 +122,12 @@ final class MainViewController: UIViewController {
     }
 
     private func setupScrollView() {
-        scrollView.bounces = false
+//        scrollView.bounces = false
         scrollView.backgroundColor = .mainColor
         scrollView.showsVerticalScrollIndicator = false
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.contentInsetAdjustmentBehavior = .never
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .mainColor
     }
 
     private func configureBaseView() {
@@ -204,7 +209,7 @@ extension MainViewController: PresenterDelegate {
         mainView.descriptionView2.setupTitle(with: text)
     }
 
-    func presentСategories(category: [String]) {
+    func presentСategories(category: [Category]) {
         mainView.collectionView1.categoriesArray = category
         mainView.collectionView2.categoriesArray = category
     }

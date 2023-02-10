@@ -22,7 +22,6 @@ final class MainView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
-        setConstraints()
     }
 
     required init?(coder: NSCoder) {
@@ -102,7 +101,7 @@ final class MainView: UIView {
         addSubview(collectionView2)
     }
 
-    private func setConstraints() {
+   func setConstraints() {
         NSLayoutConstraint.activate([
             headerView.topAnchor.constraint(equalTo: topAnchor),
             headerView.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -115,7 +114,7 @@ final class MainView: UIView {
             descriptionView1.heightAnchor.constraint(equalToConstant: 84),
 
             collectionView1.topAnchor.constraint(equalTo: descriptionView1.bottomAnchor),
-            collectionView1.leadingAnchor.constraint(equalTo: leadingAnchor),
+            collectionView1.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             collectionView1.trailingAnchor.constraint(equalTo: trailingAnchor),
             collectionView1.heightAnchor.constraint(equalToConstant: 44),
 

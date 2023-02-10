@@ -11,7 +11,7 @@ protocol MainPresenterProtocol: AnyObject {
     func presentTitleLabel(title: String)
     func presentFirstDescription(text: String)
     func presentSecondDescription(text: String)
-    func presentСategories(category: [String])
+    func presentСategories(category: [Category])
     func presentAlert()
 }
 
@@ -48,9 +48,9 @@ final class MainPresenter {
     }
 
     func getСategories() {
-        var categoriesArray: [String] = []
-            Category.allCases.forEach {
-            categoriesArray.append($0.rawValue)
+        var categoriesArray: [Category] = []
+            Categorys.allCases.forEach {
+                categoriesArray.append(Category(name: $0.rawValue, isSelected: false))
         }
         delegate?.presentСategories(category: categoriesArray)
     }

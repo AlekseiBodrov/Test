@@ -39,7 +39,7 @@ final class MainDescriptionView: UIView {
     }
 
  
-    private func setConstraints() {
+    func setConstraints() {
         NSLayoutConstraint.activate([
             titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mplus),

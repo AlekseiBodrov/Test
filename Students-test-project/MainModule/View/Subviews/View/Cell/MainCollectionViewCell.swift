@@ -8,7 +8,6 @@
 import UIKit
 
 final class MainCollectionViewCell: UICollectionViewCell {
-
     //MARK: - static
     static let identifier = "MainCollectionViewCell"
 
@@ -18,16 +17,31 @@ final class MainCollectionViewCell: UICollectionViewCell {
     }
 
     private lazy var label = UILabel()
+    var isPicked = false
 
-    // MARK: - init
+    //MARK: - life cycle funcs
     private override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
-        setConstraint()
+
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        setConstraint()
+    }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        if isPicked {
+            didSelectItem()
+        } else {
+            didDeselectItem()
+        }
     }
 
     //MARK: - public
@@ -38,12 +52,16 @@ final class MainCollectionViewCell: UICollectionViewCell {
     func didSelectItem() {
         backgroundColor = .secondaryColor
         label.textColor = .mainColor
+        isPicked = true
     }
 
     func didDeselectItem() {
         backgroundColor = .lightSecondaryColor
         label.textColor = .secondaryColor
+        isPicked = false
     }
+
+
 }
 
 extension MainCollectionViewCell {

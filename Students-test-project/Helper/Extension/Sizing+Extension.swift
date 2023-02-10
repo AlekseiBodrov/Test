@@ -7,17 +7,22 @@
 
 import Foundation
 
-public protocol Spacing {
+public protocol Sizing {
     init(_ value: Double)
 }
 
-extension Int: Spacing { }
-extension UInt: Spacing { }
-extension Float: Spacing { }
-extension Double: Spacing { }
-extension CGFloat: Spacing { }
+extension Int: Sizing { }
+extension UInt: Sizing { }
+extension Float: Sizing { }
+extension Double: Sizing { }
+extension CGFloat: Sizing { }
 
-extension Spacing {
+extension Sizing {
+
+    /// minBtn
+    ///
+    /// Value: 44.0.
+    public static var minBtn: Self { Self(44.0) }
 
     /// XL
     ///
