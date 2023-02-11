@@ -9,16 +9,26 @@ import UIKit
 
 final class MainView: UIView {
 
-    //MARK: - let/var
+    //MARK: - constant
+    private enum Constant {
+        static let headerViewHeight: CGFloat = 56
+        static let headerViewRadius: CGFloat = 32
+        static let descriptionView1Height: CGFloat = 84
+        static let descriptionView2Height: CGFloat = 64
+        static let collection1Height: CGFloat = .minBtn
+        static let collection2Height: CGFloat = 100
+    }
+
+    //MARK: - property
     lazy var headerView = MainViewHeader()
 
     lazy var descriptionView1 = MainDescriptionView()
-    lazy var collectionView1 = CategoriesView()
+    lazy var collectionView1 = MainHorizontalMenuView()
 
     lazy var descriptionView2 = MainDescriptionView()
-    lazy var collectionView2 = HorizontalMenuView()
+    lazy var collectionView2 = MainCategoriesMenuView()
 
-    // MARK: - Init
+    // MARK: - init
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -38,66 +48,30 @@ final class MainView: UIView {
     }
 
     private func configureHeaderView() {
-        headerView.backgroundColor = Color.mainColor
-        headerView.layer.cornerRadius = 32
-        headerView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        headerView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(headerView)
-
+        headerView.layer.cornerRadius = Constant.headerViewRadius
+        headerView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        headerView.create(backgroundColor: Color.mainColor)
     }
 
     private func configureDescriptionView1() {
-        descriptionView1.translatesAutoresizingMaskIntoConstraints = false
-        descriptionView1.backgroundColor = Color.mainColor
-
         addSubview(descriptionView1)
+        descriptionView1.create(backgroundColor: Color.mainColor)
     }
 
     private func configureDescriptionView2() {
-        descriptionView2.translatesAutoresizingMaskIntoConstraints = false
-        descriptionView2.backgroundColor = Color.mainColor
-
         addSubview(descriptionView2)
+        descriptionView2.create(backgroundColor: Color.mainColor)
     }
 
     private func configureCollectionView1() {
-//        let layout = UICollectionViewFlowLayout()
-//        layout.scrollDirection = .horizontal
-//        layout.minimumInteritemSpacing = 12
-//
-//        collectionView1 = UICollectionView(frame: .zero, collectionViewLayout: layout)
-////        collectionView1.contentInset = UIEdgeInsets(top: 0, left: 32, bottom: 0, right: 32)
-//        collectionView1.alwaysBounceHorizontal = true
-//        collectionView1.showsVerticalScrollIndicator = false
-//        collectionView1.showsHorizontalScrollIndicator = false
-//        collectionView1.backgroundView = UIView()
-//        collectionView1.backgroundView?.backgroundColor = .cyan
-
-        collectionView1.translatesAutoresizingMaskIntoConstraints = false
-//
-//        collectionView1.delegate = self
-//        collectionView1.dataSource = self
-//        collectionView1.register(MainCollectionViewCell.self, forCellWithReuseIdentifier: MainCollectionViewCell.identifier)
-        
         addSubview(collectionView1)
+        collectionView1.create(backgroundColor: Color.mainColor)
     }
 
     private func configureCollectionView2() {
-//        let layout = UICollectionViewFlowLayout()
-//        layout.scrollDirection = .horizontal
-//        layout.minimumInteritemSpacing = 12
-//
-//        collectionView2 = UICollectionView(frame: .zero, collectionViewLayout: layout)
-//        collectionView2.contentInset = UIEdgeInsets(top: 0, left: 32, bottom: 0, right: 32)
-//        collectionView2.register(UICollectionViewCell.self,
-//                                forCellWithReuseIdentifier: "UICollectionViewCell")
-//        collectionView2.alwaysBounceHorizontal = true
-//        collectionView2.showsVerticalScrollIndicator = false
-//        collectionView2.showsHorizontalScrollIndicator = false
-//        collectionView2.backgroundView = UIView()
-//        collectionView2.backgroundView?.backgroundColor = .yellow
-        collectionView2.translatesAutoresizingMaskIntoConstraints = false
         addSubview(collectionView2)
+        collectionView2.create(backgroundColor: Color.mainColor)
     }
 
    func setConstraints() {
@@ -105,27 +79,27 @@ final class MainView: UIView {
             headerView.topAnchor.constraint(equalTo: topAnchor),
             headerView.leadingAnchor.constraint(equalTo: leadingAnchor),
             headerView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            headerView.heightAnchor.constraint(equalToConstant: 56),
+            headerView.heightAnchor.constraint(equalToConstant: Constant.headerViewHeight),
 
             descriptionView1.topAnchor.constraint(equalTo: headerView.bottomAnchor),
             descriptionView1.leadingAnchor.constraint(equalTo: leadingAnchor),
             descriptionView1.trailingAnchor.constraint(equalTo: trailingAnchor),
-            descriptionView1.heightAnchor.constraint(equalToConstant: 84),
+            descriptionView1.heightAnchor.constraint(equalToConstant: Constant.headerViewHeight),
 
             collectionView1.topAnchor.constraint(equalTo: descriptionView1.bottomAnchor),
             collectionView1.leadingAnchor.constraint(equalTo: leadingAnchor),
             collectionView1.trailingAnchor.constraint(equalTo: trailingAnchor),
-            collectionView1.heightAnchor.constraint(equalToConstant: 44),
+            collectionView1.heightAnchor.constraint(equalToConstant: Constant.headerViewHeight),
 
             descriptionView2.topAnchor.constraint(equalTo: collectionView1.bottomAnchor),
             descriptionView2.leadingAnchor.constraint(equalTo: leadingAnchor),
             descriptionView2.trailingAnchor.constraint(equalTo: trailingAnchor),
-            descriptionView2.heightAnchor.constraint(equalToConstant: 64),
+            descriptionView2.heightAnchor.constraint(equalToConstant: Constant.descriptionView2Height),
 
             collectionView2.topAnchor.constraint(equalTo: descriptionView2.bottomAnchor),
-            collectionView2.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+            collectionView2.leadingAnchor.constraint(equalTo: leadingAnchor),
             collectionView2.trailingAnchor.constraint(equalTo: trailingAnchor),
-            collectionView2.heightAnchor.constraint(equalToConstant: 100),
+            collectionView2.heightAnchor.constraint(equalToConstant: Constant.collection2Height),
         ])
     }
 }

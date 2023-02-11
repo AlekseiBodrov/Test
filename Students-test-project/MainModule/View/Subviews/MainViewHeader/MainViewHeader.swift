@@ -9,10 +9,20 @@ import UIKit
 
 final class MainViewHeader: UIView {
 
-    //MARK: - let/var
+    //MARK: - constant
+    private enum Constant {
+        static let headerViewHeight: CGFloat = 56
+        static let headerViewRadius: CGFloat = 32
+        static let descriptionView1Height: CGFloat = 84
+        static let descriptionView2Height: CGFloat = 64
+        static let collection1Height: CGFloat = .minBtn
+        static let collection2Height: CGFloat = 100
+    }
+    
+    //MARK: - property
     lazy var titleLabel = UILabel()
 
-    // MARK: - Init
+    // MARK: - init
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -32,11 +42,11 @@ final class MainViewHeader: UIView {
         titleLabel.textAlignment = .left
         titleLabel.font = Resources.Fonts.sfProDisplayBold(with: .l)
         titleLabel.textColor = Color.secondaryColor
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-
+        titleLabel.create(backgroundColor: .clear)
         addSubview(titleLabel)
     }
 
+    //MARK: - public
     func setConstraints() {
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mplus),
@@ -45,7 +55,6 @@ final class MainViewHeader: UIView {
         ])
     }
 
-    //MARK: - public
     func setupTitle(with text: String) {
         titleLabel.text = text
     }

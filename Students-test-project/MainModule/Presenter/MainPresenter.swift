@@ -19,7 +19,7 @@ typealias PresenterDelegate = MainPresenterProtocol
 
 final class MainPresenter {
 
-    //MARK: - let/var
+    //MARK: - delegate
     weak var delegate: PresenterDelegate?
 
     //MARK: - flow funcs

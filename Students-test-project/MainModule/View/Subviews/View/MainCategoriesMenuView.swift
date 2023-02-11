@@ -1,15 +1,15 @@
 //
-//  MainCategoriesView.swift
+//  HorizontalMenuCollectionView.swift
 //  Students-test-project
 //
-//  Created by Алексей on 09.02.2023.
+//  Created by Алексей on 11.02.2023.
 //
 
 import UIKit
 
-final class MainHorizontalCollectionView: UIView {
+final class MainCategoriesMenuView: UIView {
 
-    //MARK: - constants
+    //MARK: - constant
     enum SizeConstant {
         static let padding: CGFloat = .mplus
         static let fontHeight: CGFloat = .splus
@@ -37,8 +37,8 @@ final class MainHorizontalCollectionView: UIView {
 }
 
 //MARK: - extension UICollectionViewDelegate
-extension MainHorizontalCollectionView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
+extension MainCategoriesMenuView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return sizeForTextLabel(for: indexPath)
     }
@@ -58,14 +58,14 @@ extension MainHorizontalCollectionView: UICollectionViewDelegate, UICollectionVi
 }
 
 //MARK: - extension
-extension MainHorizontalCollectionView {
+extension MainCategoriesMenuView {
 
     //MARK: - flow funcs
     private func setup() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 0
-        layout.minimumInteritemSpacing = 12
+        layout.minimumInteritemSpacing = 0
         layout.sectionInset = UIEdgeInsets(top: 0, left: SizeConstant.padding, bottom: 0, right: SizeConstant.padding)
         collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
 
@@ -75,17 +75,17 @@ extension MainHorizontalCollectionView {
         collection.delegate = self
         collection.dataSource = self
         collection.clipsToBounds = false
-        collection.backgroundColor = Color.mainColor
         collection.showsHorizontalScrollIndicator = false
-        collection.translatesAutoresizingMaskIntoConstraints = false
+
         collection.register(MainCollectionViewCell.self, forCellWithReuseIdentifier: MainCollectionViewCell.identifier)
+        collection.create(backgroundColor: Color.mainColor)
     }
 
     private func setConstraints() {
         NSLayoutConstraint.activate([
             collection.topAnchor.constraint(equalTo: topAnchor),
             collection.bottomAnchor.constraint(equalTo: bottomAnchor),
-            collection.leadingAnchor.constraint(equalTo: leadingAnchor),
+            collection.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .xs),
             collection.trailingAnchor.constraint(equalTo: trailingAnchor),
         ])
     }
@@ -99,7 +99,7 @@ extension MainHorizontalCollectionView {
     private func sizeForTextLabel(for indexPath: IndexPath) -> CGSize {
         let categoryFont = Resources.Fonts.sfProDisplayMedium(with: .splus)
         let categoryAttributes = [NSAttributedString.Key.font: categoryFont as Any]
-        let categoryWidth = categoriesArray[indexPath.item].name.size(withAttributes: categoryAttributes).width + .l + .l
+        let categoryWidth = categoriesArray[indexPath.item].name.size(withAttributes: categoryAttributes).width + .s + .l + .l
         let height = SizeConstant.buttonHeight
         return CGSize(width: categoryWidth, height: height)
     }

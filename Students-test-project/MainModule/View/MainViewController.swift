@@ -9,23 +9,20 @@
 
 import UIKit
 
-struct MainViewSizeConstants {
-    static let cornerRadius: CGFloat = 32.0
-    static let height: CGFloat = UIScreen.main.bounds.size.height
-    static var heightSafeAria: CGFloat = UIViewController().view.safeAreaLayoutGuide.layoutFrame.height
-    static let width: CGFloat = UIScreen.main.bounds.size.width
-    static let backgroundImageViewHeight: CGFloat = 800
-}
-
 final class MainViewController: UIViewController {
 
-    //MARK: - Constant
+    //MARK: - constant
     private enum Constant {
+        static let cornerRadius: CGFloat = 32.0
+        static let height: CGFloat = UIScreen.main.bounds.size.height
+        static var heightSafeAria: CGFloat = UIViewController().view.safeAreaLayoutGuide.layoutFrame.height
+        static let width: CGFloat = UIScreen.main.bounds.size.width
+        static let backgroundImageViewHeight: CGFloat = 800
         static let padding: CGFloat = 20
-        static let paddingBottom: CGFloat = 50
+        static let bottomPadding: CGFloat = 50
     }
 
-    //MARK: - Property
+    //MARK: - property
     private let scrollView = UIScrollView()
     private let baseView = UIView()
     private let backgroundImageView = UIImageView()
@@ -33,7 +30,7 @@ final class MainViewController: UIViewController {
     private let bottomLabel = UILabel()
     private let sendButton = UIButton()
 
-    var presenter = MainPresenter()
+    private var presenter = MainPresenter()
 
     //MARK: - life cycle funcs
     override func viewDidLoad() {
@@ -45,7 +42,7 @@ final class MainViewController: UIViewController {
         super.viewDidLayoutSubviews()
         setupScrollView()
 
-        MainViewSizeConstants.heightSafeAria = view.safeAreaLayoutGuide.layoutFrame.height
+        Constant.heightSafeAria = view.safeAreaLayoutGuide.layoutFrame.height
     }
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
@@ -55,13 +52,6 @@ final class MainViewController: UIViewController {
         mainView.descriptionView1.setConstraints()
         mainView.descriptionView2.setConstraints()
     }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        mainView.collectionView1.setPositinonCollection()
-        mainView.collectionView2.setPositinonCollection()
-    }
-
     //MARK: - flow funcs
     private func configure() {
         addSubViews()
@@ -101,18 +91,18 @@ final class MainViewController: UIViewController {
             backgroundImageView.topAnchor.constraint(equalTo: baseView.topAnchor),
             backgroundImageView.leadingAnchor.constraint(equalTo: baseView.leadingAnchor),
             backgroundImageView.trailingAnchor.constraint(equalTo: baseView.trailingAnchor),
-            backgroundImageView.widthAnchor.constraint(equalToConstant: MainViewSizeConstants.width),
+            backgroundImageView.widthAnchor.constraint(equalToConstant: Constant.width),
 
             mainView.topAnchor.constraint(equalTo: backgroundImageView.bottomAnchor, constant: -135),
             mainView.leadingAnchor.constraint(equalTo: baseView.leadingAnchor),
             mainView.trailingAnchor.constraint(equalTo: baseView.trailingAnchor),
             mainView.bottomAnchor.constraint(equalTo: baseView.bottomAnchor),
-            mainView.heightAnchor.constraint(equalToConstant: MainViewSizeConstants.heightSafeAria),
+            mainView.heightAnchor.constraint(equalToConstant: Constant.heightSafeAria),
         ])
 
         NSLayoutConstraint.activate([
             sendButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constant.padding),
-            sendButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -Constant.paddingBottom),
+            sendButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -Constant.bottomPadding),
             sendButton.heightAnchor.constraint(equalToConstant: 60),
 
             bottomLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constant.padding),
