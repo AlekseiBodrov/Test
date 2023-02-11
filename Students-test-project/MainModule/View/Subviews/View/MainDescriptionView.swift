@@ -16,7 +16,7 @@ final class MainDescriptionView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
-        setConstraints()
+
     }
 
     required init?(coder: NSCoder) {
@@ -25,17 +25,22 @@ final class MainDescriptionView: UIView {
 
     //MARK: - flow funcs
     private func configure() {
+
+//        Важно последовательность
+        addSubview(titleLabel)
+
+        setConstraints()
+
 //        titleLabel.frame = bounds
 
         titleLabel.textAlignment = .left
         titleLabel.font = Resources.Fonts.sfProDisplayRegular(with: .splus)
         titleLabel.numberOfLines = 0
-        titleLabel.textColor = .secondaryTextColor
-        titleLabel.backgroundColor = .mainColor
+        titleLabel.textColor = Color.secondaryTextColor
+        titleLabel.backgroundColor = Color.mainColor
 
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
 
-        addSubview(titleLabel)
     }
 
  

@@ -24,6 +24,7 @@ final class MainCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         configure()
 
+
     }
 
     required init?(coder: NSCoder) {
@@ -50,14 +51,14 @@ final class MainCollectionViewCell: UICollectionViewCell {
     }
 
     func didSelectItem() {
-        backgroundColor = .secondaryColor
-        label.textColor = .mainColor
+        backgroundColor = Color.secondaryColor
+        label.textColor = Color.mainColor
         isPicked = true
     }
 
     func didDeselectItem() {
-        backgroundColor = .lightSecondaryColor
-        label.textColor = .secondaryColor
+        backgroundColor = Color.lightSecondaryColor
+        label.textColor = Color.secondaryColor
         isPicked = false
     }
 
@@ -69,11 +70,11 @@ extension MainCollectionViewCell {
     //MARK: - flow funcs
     private func configure() {
         label.textAlignment = .center
-        label.textColor = .secondaryColor
+        label.textColor = Color.secondaryColor
         label.font = Resources.Fonts.sfProDisplayMedium(with: .splus)
         label.translatesAutoresizingMaskIntoConstraints = false
 
-        backgroundColor = .lightSecondaryColor
+        backgroundColor = Color.lightSecondaryColor
         rounded(radius: Constant.radius)
 
         contentView.addSubview(label)

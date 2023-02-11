@@ -38,7 +38,7 @@ final class MainView: UIView {
     }
 
     private func configureHeaderView() {
-        headerView.backgroundColor = .mainColor
+        headerView.backgroundColor = Color.mainColor
         headerView.layer.cornerRadius = 32
         headerView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         headerView.translatesAutoresizingMaskIntoConstraints = false
@@ -48,14 +48,14 @@ final class MainView: UIView {
 
     private func configureDescriptionView1() {
         descriptionView1.translatesAutoresizingMaskIntoConstraints = false
-        descriptionView1.backgroundColor = .mainColor
+        descriptionView1.backgroundColor = Color.mainColor
 
         addSubview(descriptionView1)
     }
 
     private func configureDescriptionView2() {
         descriptionView2.translatesAutoresizingMaskIntoConstraints = false
-        descriptionView2.backgroundColor = .systemBlue
+        descriptionView2.backgroundColor = Color.mainColor
 
         addSubview(descriptionView2)
     }
@@ -72,7 +72,7 @@ final class MainView: UIView {
 //        collectionView1.showsHorizontalScrollIndicator = false
 //        collectionView1.backgroundView = UIView()
 //        collectionView1.backgroundView?.backgroundColor = .cyan
-        collectionView1.backgroundColor = .red
+
         collectionView1.translatesAutoresizingMaskIntoConstraints = false
 //
 //        collectionView1.delegate = self
@@ -96,7 +96,6 @@ final class MainView: UIView {
 //        collectionView2.showsHorizontalScrollIndicator = false
 //        collectionView2.backgroundView = UIView()
 //        collectionView2.backgroundView?.backgroundColor = .yellow
-        collectionView2.backgroundColor = .red
         collectionView2.translatesAutoresizingMaskIntoConstraints = false
         addSubview(collectionView2)
     }

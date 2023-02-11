@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+//swiftgen or rswift
 enum Resources {
 
     enum Images {

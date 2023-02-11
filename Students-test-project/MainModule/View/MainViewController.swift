@@ -5,12 +5,9 @@
 //  Created by Алексей on 08.02.2023.
 //
 
-import UIKit
 
-protocol MainViewProtocol: AnyObject {
-    func setBackgroundImage(image: UIImage)
-    func setHeaderViewWithName(_ name: String)
-}
+
+import UIKit
 
 struct MainViewSizeConstants {
     static let cornerRadius: CGFloat = 32.0
@@ -22,12 +19,13 @@ struct MainViewSizeConstants {
 
 final class MainViewController: UIViewController {
 
+    //MARK: - Constant
     private enum Constant {
         static let padding: CGFloat = 20
         static let paddingBottom: CGFloat = 50
     }
 
-    //MARK: - let/var
+    //MARK: - Property
     private let scrollView = UIScrollView()
     private let baseView = UIView()
     private let backgroundImageView = UIImageView()
@@ -36,11 +34,12 @@ final class MainViewController: UIViewController {
     private let sendButton = UIButton()
 
     var presenter = MainPresenter()
+
     //MARK: - life cycle funcs
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
-
+        setConstraints()
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -60,6 +59,13 @@ final class MainViewController: UIViewController {
     //MARK: - flow funcs
     private func configure() {
         addSubViews()
+
+        setConstraints()
+        mainView.setConstraints()
+        mainView.headerView.setConstraints()
+        mainView.descriptionView1.setConstraints()
+        mainView.descriptionView2.setConstraints()
+
         configureBaseView()
         configureBackgroundImageView()
         configureMainView()
@@ -95,7 +101,7 @@ final class MainViewController: UIViewController {
             mainView.leadingAnchor.constraint(equalTo: baseView.leadingAnchor),
             mainView.trailingAnchor.constraint(equalTo: baseView.trailingAnchor),
             mainView.bottomAnchor.constraint(equalTo: baseView.bottomAnchor),
-            mainView.heightAnchor.constraint(equalToConstant: MainViewSizeConstants.heightSafeAria - 70),
+            mainView.heightAnchor.constraint(equalToConstant: MainViewSizeConstants.heightSafeAria),
         ])
 
         NSLayoutConstraint.activate([
@@ -111,7 +117,7 @@ final class MainViewController: UIViewController {
     }
 
     private func addSubViews() {
-        view.backgroundColor = .mainColor
+        view.backgroundColor = Color.mainColor
 
         view.addSubview(scrollView)
         view.addSubview(bottomLabel)
@@ -122,26 +128,24 @@ final class MainViewController: UIViewController {
     }
 
     private func setupScrollView() {
-//        scrollView.bounces = false
-        scrollView.backgroundColor = .mainColor
+        scrollView.backgroundColor = Color.mainColor
         scrollView.showsVerticalScrollIndicator = false
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.contentInsetAdjustmentBehavior = .never
+        scrollView.delegate = self
         scrollView.translatesAutoresizingMaskIntoConstraints = false
     }
 
     private func configureBaseView() {
         baseView.translatesAutoresizingMaskIntoConstraints = false
-        baseView.backgroundColor = .mainColor
+        baseView.backgroundColor = Color.mainColor
     }
 
     private func configureBackgroundImageView() {
-        backgroundImageView.backgroundColor = .green
         backgroundImageView.clipsToBounds = true
         backgroundImageView.contentMode = .scaleAspectFill
+        backgroundImageView.tag = 1
         backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
-
-        setBackgroundImage(image: UIImage(named: "mountains")!)
     }
 
     private func configureMainView() {
@@ -156,13 +160,13 @@ final class MainViewController: UIViewController {
         bottomLabel.translatesAutoresizingMaskIntoConstraints = false
         bottomLabel.text = Resources.String.BottomView.label
         bottomLabel.font = Resources.Fonts.sfProDisplayRegular(with: .splus)
-        bottomLabel.textColor = .secondaryTextColor
+        bottomLabel.textColor = Color.secondaryTextColor
     }
 
     private func configureSendButton() {
         sendButton.translatesAutoresizingMaskIntoConstraints = false
         sendButton.rounded(radius: 30)
-        sendButton.backgroundColor = .secondaryColor
+        sendButton.backgroundColor = Color.secondaryColor
         sendButton.setTitle(Resources.String.BottomView.sendButton, for: .normal)
         sendButton.titleLabel?.font = Resources.Fonts.sfProDisplayMedium(with: .m)
         sendButton.addTarget(self, action: #selector(tuchDetected), for: .touchUpInside)
@@ -173,21 +177,7 @@ final class MainViewController: UIViewController {
     }
 }
 
-extension MainViewController: MainViewProtocol {
-    func setBackgroundImage(image: UIImage) {
-
-    }
-
-
-
-    func setHeaderViewWithName(_ name: String) {
-
-    }
-
-
-}
-
-
+    //MARK: - PresenterDelegate
 extension MainViewController: PresenterDelegate {
     func presentBackgroundImage(with name: String) {
         backgroundImageView.image = UIImage(named: name)
@@ -222,5 +212,32 @@ extension MainViewController: PresenterDelegate {
         let cancelAction = UIAlertAction(title: cancelTitle, style: .cancel)
         alertController.addAction(cancelAction)
         present(alertController, animated: true)
+    }
+}
+
+extension MainViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print(scrollView.contentOffset.y)
+
+        if scrollView.contentOffset.y < 0.0 {
+
+          }
+
+//        if scrollView.contentOffset.y < 0.0 {
+//            backgroundImageView.constraints
+//            self.backgroundImageView.constant = 250 - (scrollView.contentOffset.y)
+//            self.top_imgView.constant = scrollView.contentOffset.y
+//            self.trailling_ImgView.constant = (scrollView.contentOffset.y)
+//            self.leading_ImgView.constant =  (scrollView.contentOffset.y)
+//        }
+//        else {
+//            if scrollView.contentOffset.y < 70 {
+//            self.height_ImgView.constant = 250 - (scrollView.contentOffset.y)
+//            self.top_imgView.constant =  (scrollView.contentOffset.y * 0.25)
+//            self.bottom_ImgView.constant = -(scrollView.contentOffset.y * 0.75)
+//            self.trailling_ImgView.constant =  -(scrollView.contentOffset.y)
+//            self.leading_ImgView.constant =  -(scrollView.contentOffset.y)
+//            }
+//        }
     }
 }

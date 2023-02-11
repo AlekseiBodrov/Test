@@ -49,8 +49,10 @@ final class MainPresenter {
 
     func getСategories() {
         var categoriesArray: [Category] = []
+        for _ in 0...50 {
             Categorys.allCases.forEach {
                 categoriesArray.append(Category(name: $0.rawValue, isSelected: false))
+            }
         }
         delegate?.presentСategories(category: categoriesArray)
     }

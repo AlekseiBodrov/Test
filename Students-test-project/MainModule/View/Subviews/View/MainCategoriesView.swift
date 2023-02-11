@@ -33,6 +33,7 @@ final class CategoriesView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         setConstraints()
+        collection.scrollToItem(at: IndexPath(row: 30, section: 0), at: .left, animated: false)
     }
 }
 
@@ -82,14 +83,16 @@ extension CategoriesView {
         layout.scrollDirection = .horizontal
         collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
 
+        addSubview(collection)
+
         collection.delegate = self
         collection.dataSource = self
         collection.clipsToBounds = false
-        collection.backgroundColor = .mainColor
+        collection.backgroundColor = Color.mainColor
         collection.showsHorizontalScrollIndicator = false
         collection.translatesAutoresizingMaskIntoConstraints = false
         collection.register(MainCollectionViewCell.self, forCellWithReuseIdentifier: MainCollectionViewCell.identifier)
-        addSubview(collection)
+
     }
 
     private func setConstraints() {
