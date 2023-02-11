@@ -56,6 +56,12 @@ final class MainViewController: UIViewController {
         mainView.descriptionView2.setConstraints()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        mainView.collectionView1.setPositinonCollection()
+        mainView.collectionView2.setPositinonCollection()
+    }
+
     //MARK: - flow funcs
     private func configure() {
         addSubViews()

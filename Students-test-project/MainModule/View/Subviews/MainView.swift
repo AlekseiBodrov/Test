@@ -16,7 +16,7 @@ final class MainView: UIView {
     lazy var collectionView1 = CategoriesView()
 
     lazy var descriptionView2 = MainDescriptionView()
-    lazy var collectionView2 = CategoriesView()
+    lazy var collectionView2 = HorizontalMenuView()
 
     // MARK: - Init
     override init(frame: CGRect) {
@@ -113,7 +113,7 @@ final class MainView: UIView {
             descriptionView1.heightAnchor.constraint(equalToConstant: 84),
 
             collectionView1.topAnchor.constraint(equalTo: descriptionView1.bottomAnchor),
-            collectionView1.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            collectionView1.leadingAnchor.constraint(equalTo: leadingAnchor),
             collectionView1.trailingAnchor.constraint(equalTo: trailingAnchor),
             collectionView1.heightAnchor.constraint(equalToConstant: 44),
 
@@ -123,7 +123,7 @@ final class MainView: UIView {
             descriptionView2.heightAnchor.constraint(equalToConstant: 64),
 
             collectionView2.topAnchor.constraint(equalTo: descriptionView2.bottomAnchor),
-            collectionView2.leadingAnchor.constraint(equalTo: leadingAnchor),
+            collectionView2.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
             collectionView2.trailingAnchor.constraint(equalTo: trailingAnchor),
             collectionView2.heightAnchor.constraint(equalToConstant: 100),
         ])

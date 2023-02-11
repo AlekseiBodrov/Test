@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D76D04452997F45400B47BED /* HorizontalMenuCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76D04442997F45400B47BED /* HorizontalMenuCollectionView.swift */; };
 		D7716132298FA4DC00D86F74 /* Sizing+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7716131298FA4DC00D86F74 /* Sizing+Extension.swift */; };
 		D7CF516529941080006A3C2F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CF516429941080006A3C2F /* MainViewController.swift */; };
 		D7CF516729941BB0006A3C2F /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CF516629941BB0006A3C2F /* MainView.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D76D04442997F45400B47BED /* HorizontalMenuCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalMenuCollectionView.swift; sourceTree = "<group>"; };
 		D7716131298FA4DC00D86F74 /* Sizing+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sizing+Extension.swift"; sourceTree = "<group>"; };
 		D7CF516429941080006A3C2F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		D7CF516629941BB0006A3C2F /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				D7CF715E2994D19100B00550 /* MainCategoriesView.swift */,
+				D76D04442997F45400B47BED /* HorizontalMenuCollectionView.swift */,
 				D7CF715A2994B91300B00550 /* MainDescriptionView.swift */,
 				D7CF716729953A6B00B00550 /* Cell */,
 			);
@@ -291,6 +294,7 @@
 				D7CF715D2994CB8300B00550 /* MainCollectionViewCell.swift in Sources */,
 				D7F18CE7298E6E1700695AE1 /* Resources.swift in Sources */,
 				D7CF716C2995506000B00550 /* Model.swift in Sources */,
+				D76D04452997F45400B47BED /* HorizontalMenuCollectionView.swift in Sources */,
 				D7CF71592994AFDC00B00550 /* MainViewHeader.swift in Sources */,
 				D7F18C9C298D32F600695AE1 /* UIColor+Extension.swift in Sources */,
 				D7CF71612994DADE00B00550 /* MainPresenter.swift in Sources */,
