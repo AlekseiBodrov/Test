@@ -10,9 +10,9 @@ import UIKit
 final class MainDescriptionView: UIView {
 
     //MARK: - constant
-    enum SizeConstant {
+    enum Constant {
         static let padding: CGFloat = .mplus
-        static let font: CGFloat = .splus
+        static let titleLabelFont = Resources.Fonts.sfProDisplayRegular(with: .splus)
     }
 
     //MARK: - property
@@ -34,7 +34,7 @@ final class MainDescriptionView: UIView {
         setConstraints()
 
         titleLabel.textAlignment = .left
-        titleLabel.font = Resources.Fonts.sfProDisplayRegular(with: SizeConstant.font)
+        titleLabel.font = Constant.titleLabelFont
         titleLabel.numberOfLines = 0
         titleLabel.textColor = Color.secondaryTextColor
         titleLabel.create(backgroundColor: .clear)
@@ -44,8 +44,8 @@ final class MainDescriptionView: UIView {
     func setConstraints() {
         NSLayoutConstraint.activate([
             titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: SizeConstant.padding),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -SizeConstant.padding),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constant.padding),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constant.padding),
         ])
     }
 

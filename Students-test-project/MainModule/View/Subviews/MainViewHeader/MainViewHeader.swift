@@ -11,12 +11,8 @@ final class MainViewHeader: UIView {
 
     //MARK: - constant
     private enum Constant {
-        static let headerViewHeight: CGFloat = 56
-        static let headerViewRadius: CGFloat = 32
-        static let descriptionView1Height: CGFloat = 84
-        static let descriptionView2Height: CGFloat = 64
-        static let collection1Height: CGFloat = .minBtn
-        static let collection2Height: CGFloat = 100
+        static let padding: CGFloat = .mplus
+        static let titleLabelFont = Resources.Fonts.sfProDisplayBold(with: .l)
     }
     
     //MARK: - property
@@ -32,25 +28,22 @@ final class MainViewHeader: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        setConstraints()
-    }
-
     //MARK: - flow funcs
     private func configure() {
+        addSubview(titleLabel)
+        setConstraints()
+
         titleLabel.textAlignment = .left
-        titleLabel.font = Resources.Fonts.sfProDisplayBold(with: .l)
+        titleLabel.font = Constant.titleLabelFont
         titleLabel.textColor = Color.secondaryColor
         titleLabel.create(backgroundColor: .clear)
-        addSubview(titleLabel)
     }
 
     //MARK: - public
     func setConstraints() {
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .mplus),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: .mplus),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constant.padding),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constant.padding),
             titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
     }

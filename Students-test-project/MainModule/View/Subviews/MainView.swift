@@ -84,12 +84,12 @@ final class MainView: UIView {
             descriptionView1.topAnchor.constraint(equalTo: headerView.bottomAnchor),
             descriptionView1.leadingAnchor.constraint(equalTo: leadingAnchor),
             descriptionView1.trailingAnchor.constraint(equalTo: trailingAnchor),
-            descriptionView1.heightAnchor.constraint(equalToConstant: Constant.headerViewHeight),
+            descriptionView1.heightAnchor.constraint(equalToConstant: Constant.descriptionView1Height),
 
             collectionView1.topAnchor.constraint(equalTo: descriptionView1.bottomAnchor),
             collectionView1.leadingAnchor.constraint(equalTo: leadingAnchor),
             collectionView1.trailingAnchor.constraint(equalTo: trailingAnchor),
-            collectionView1.heightAnchor.constraint(equalToConstant: Constant.headerViewHeight),
+            collectionView1.heightAnchor.constraint(equalToConstant: Constant.collection1Height),
 
             descriptionView2.topAnchor.constraint(equalTo: collectionView1.bottomAnchor),
             descriptionView2.leadingAnchor.constraint(equalTo: leadingAnchor),

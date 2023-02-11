@@ -10,9 +10,8 @@ import UIKit
 final class MainHorizontalMenuView: UIView {
 
     //MARK: - constant
-    enum SizeConstant {
+    enum Constant {
         static let padding: CGFloat = .mplus
-        static let fontHeight: CGFloat = .splus
         static let buttonHeight: CGFloat = .minBtn
     }
 
@@ -66,7 +65,7 @@ extension MainHorizontalMenuView {
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
-        layout.sectionInset = UIEdgeInsets(top: 0, left: SizeConstant.padding, bottom: 0, right: SizeConstant.padding)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: Constant.padding, bottom: 0, right: Constant.padding)
         collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
 
         addSubview(collection)
@@ -99,7 +98,7 @@ extension MainHorizontalMenuView {
         let categoryFont = Resources.Fonts.sfProDisplayMedium(with: .splus)
         let categoryAttributes = [NSAttributedString.Key.font: categoryFont as Any]
         let categoryWidth = categoriesArray[indexPath.item].name.size(withAttributes: categoryAttributes).width + .s + .l + .l
-        let height = SizeConstant.buttonHeight
+        let height = Constant.buttonHeight
         return CGSize(width: categoryWidth, height: height)
     }
 }

@@ -15,7 +15,7 @@ final class MainCollectionViewCell: UICollectionViewCell {
     private enum Constant {
         static let radius: CGFloat = .s
         static let padding: CGFloat = .s
-        static let font: CGFloat = .splus
+        static let labelFont = Resources.Fonts.sfProDisplayMedium(with: .splus)
     }
 
     //MARK: - property
@@ -58,7 +58,7 @@ extension MainCollectionViewCell {
         label.create(backgroundColor: .clear)
         label.textAlignment = .center
         label.textColor = Color.secondaryColor
-        label.font = Resources.Fonts.sfProDisplayMedium(with: Constant.font)
+        label.font = Constant.labelFont
     }
 
     private func setConstraint() {
