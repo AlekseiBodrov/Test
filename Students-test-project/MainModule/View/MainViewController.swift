@@ -47,8 +47,6 @@ final class MainViewController: UIViewController {
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        setupScrollView()
-
         Constant.safeAriaHeight = view.safeAreaLayoutGuide.layoutFrame.height + view.safeAreaInsets.bottom
     }
     override func viewWillLayoutSubviews() {
@@ -63,17 +61,62 @@ final class MainViewController: UIViewController {
     private func configure() {
         addSubViews()
 
-        setConstraints()
-        mainView.setConstraints()
-        mainView.headerView.setConstraints()
-        mainView.descriptionView1.setConstraints()
-        mainView.descriptionView2.setConstraints()
+        configureView()
+        configureImageView()
+        configureLabel()
+        configureButton()
+        configurePresenter()
+    }
 
-        configureBaseView()
-        configureBackgroundImageView()
-        configureMainView()
-        configureBottomLabel()
-        configureSendButton()
+    private func addSubViews() {
+        view.addSubview(scrollView)
+        view.addSubview(bottomLabel)
+        view.addSubview(sendButton)
+        scrollView.addSubview(baseView)
+        baseView.addSubview(backgroundImageView)
+        baseView.addSubview(mainView)
+    }
+
+    private func configureView() {
+        view.backgroundColor = Color.mainColor
+
+        baseView.create(backgroundColor: Color.mainColor)
+        mainView.create(backgroundColor: .clear)
+
+        scrollView.create(backgroundColor: Color.mainColor)
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.contentInsetAdjustmentBehavior = .never
+        scrollView.delegate = self
+    }
+
+    private func configureImageView() {
+        backgroundImageView.clipsToBounds = true
+        backgroundImageView.contentMode = .scaleAspectFill
+        backgroundImageView.tag = 1
+        backgroundImageView.create(backgroundColor: .clear)
+    }
+
+    private func configureLabel() {
+        bottomLabel.text = Resources.String.BottomView.label
+        bottomLabel.font = Constant.bottomLabelFont
+        bottomLabel.textColor = Color.secondaryTextColor
+        bottomLabel.create(backgroundColor: .clear)
+
+        presentTitleLabel(title: Resources.String.Label.titleLabel)
+        presentFirstDescription(text: Resources.String.Label.firstDescription)
+        presentSecondDescription(text: Resources.String.Label.secondDescription)
+    }
+
+    private func configureButton() {
+        sendButton.setTitle(Resources.String.BottomView.sendButton, for: .normal)
+        sendButton.titleLabel?.font = Constant.sendButtonFont
+        sendButton.addTarget(self, action: #selector(tuchDetected), for: .touchUpInside)
+        sendButton.rounded(radius: Constant.sendButtonCornerRadius)
+        sendButton.create(backgroundColor: Color.secondaryColor)
+    }
+
+    private func configurePresenter() {
 
         presenter.setViewDelegate(delegate: self)
         presenter.getBackgroundImage()
@@ -81,6 +124,10 @@ final class MainViewController: UIViewController {
         presenter.getСategories()
 
         presenter.delegate = self
+    }
+
+    @objc func tuchDetected() {
+        presentAlert()
     }
 
     private func setConstraints() {
@@ -95,10 +142,10 @@ final class MainViewController: UIViewController {
             baseView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             baseView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
 
-//            backgroundImageView.topAnchor.constraint(equalTo: baseView.topAnchor),
-//            backgroundImageView.leadingAnchor.constraint(equalTo: baseView.leadingAnchor),
-//            backgroundImageView.trailingAnchor.constraint(equalTo: baseView.trailingAnchor),
-//            backgroundImageView.widthAnchor.constraint(equalToConstant: Constant.screenWidth),
+            backgroundImageView.topAnchor.constraint(equalTo: baseView.topAnchor),
+            backgroundImageView.leadingAnchor.constraint(equalTo: baseView.leadingAnchor),
+            backgroundImageView.trailingAnchor.constraint(equalTo: baseView.trailingAnchor),
+            backgroundImageView.widthAnchor.constraint(equalToConstant: Constant.screenWidth),
 
             mainView.topAnchor.constraint(equalTo: backgroundImageView.bottomAnchor, constant: -Constant.mainViewTopPadding),
             mainView.leadingAnchor.constraint(equalTo: baseView.leadingAnchor),
@@ -106,16 +153,6 @@ final class MainViewController: UIViewController {
             mainView.bottomAnchor.constraint(equalTo: baseView.bottomAnchor),
             mainView.heightAnchor.constraint(equalToConstant: Constant.safeAriaHeight),
         ])
-
-        leading_ImgView = backgroundImageView.leadingAnchor.constraint(equalTo: baseView.leadingAnchor)
-        trailling_ImgView = backgroundImageView.trailingAnchor.constraint(equalTo: baseView.trailingAnchor)
-        top_imgView = backgroundImageView.topAnchor.constraint(equalTo: baseView.topAnchor)
-        height_ImgView = backgroundImageView.widthAnchor.constraint(equalToConstant: Constant.screenWidth)
-
-        leading_ImgView?.isActive = true
-        trailling_ImgView?.isActive = true
-        top_imgView?.isActive = true
-        height_ImgView?.isActive = true
 
         NSLayoutConstraint.activate([
             sendButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constant.padding),
@@ -128,73 +165,12 @@ final class MainViewController: UIViewController {
             bottomLabel.trailingAnchor.constraint(equalTo: sendButton.leadingAnchor, constant: -Constant.padding),
         ])
     }
-
-    private func addSubViews() {
-        view.addSubview(scrollView)
-        view.addSubview(bottomLabel)
-        view.addSubview(sendButton)
-        scrollView.addSubview(baseView)
-        baseView.addSubview(backgroundImageView)
-        baseView.addSubview(mainView)
-
-        view.backgroundColor = Color.mainColor
-    }
-
-    private func setupScrollView() {
-        scrollView.showsVerticalScrollIndicator = false
-        scrollView.showsHorizontalScrollIndicator = false
-        scrollView.contentInsetAdjustmentBehavior = .never
-        scrollView.delegate = self
-        scrollView.create(backgroundColor: Color.mainColor)
-    }
-
-    private func configureBaseView() {
-        baseView.create(backgroundColor: Color.mainColor)
-    }
-
-    private func configureBackgroundImageView() {
-        backgroundImageView.clipsToBounds = true
-        backgroundImageView.contentMode = .scaleAspectFill
-        backgroundImageView.tag = 1
-        backgroundImageView.create(backgroundColor: .clear)
-    }
-
-    private func configureMainView() {
-        presentTitleLabel(title: Resources.String.Label.titleLabel)
-        presentFirstDescription(text: Resources.String.Label.firstDescription)
-        presentSecondDescription(text: Resources.String.Label.secondDescription)
-
-        mainView.translatesAutoresizingMaskIntoConstraints = false
-    }
-
-    private func configureBottomLabel() {
-        bottomLabel.text = Resources.String.BottomView.label
-        bottomLabel.font = Constant.bottomLabelFont
-        bottomLabel.textColor = Color.secondaryTextColor
-        bottomLabel.create(backgroundColor: .clear)
-    }
-
-    private func configureSendButton() {
-        sendButton.setTitle(Resources.String.BottomView.sendButton, for: .normal)
-        sendButton.titleLabel?.font = Constant.sendButtonFont
-        sendButton.addTarget(self, action: #selector(tuchDetected), for: .touchUpInside)
-        sendButton.rounded(radius: Constant.sendButtonCornerRadius)
-        sendButton.create(backgroundColor: Color.secondaryColor)
-    }
-
-    @objc func tuchDetected() {
-        presentAlert()
-    }
 }
 
     //MARK: - PresenterDelegate
 extension MainViewController: PresenterDelegate {
     func presentBackgroundImage(with name: String) {
         backgroundImageView.image = UIImage(named: name)
-    }
-
-    func presentBackgroundImage(image: UIImage) {
-
     }
 
     func presentTitleLabel(title: String) {
@@ -209,7 +185,7 @@ extension MainViewController: PresenterDelegate {
         mainView.descriptionView2.setupTitle(with: text)
     }
 
-    func presentСategories(category: [Category]) {
+    func fetchСategories(category: [Category]) {
         mainView.collectionView1.categoriesArray = category
         mainView.collectionView2.categoriesArray = category
     }
