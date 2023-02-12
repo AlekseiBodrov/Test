@@ -9,11 +9,9 @@
 - Проект написан на **UIKit**
 - Использована архитектура **MVP**
 - Адаптивная верстка интерфейса **кодом**. Проверена на **iPhone 14 Pro, iPhoneSE (3st generation)**
-- Добавлена локализация.
 
 ## <a id="Presentation"></a>Презентация
-![14Pro](./presentation/14Pro.gif)
-
+![Главный экран](./presentation/1.png)
 
 ## <a id="Task"></a>Задание
 - Необходимо на UIKit сверстать экран, чтобы он полностью повторял [дизайн](https://www.figma.com/file/S4ucVLUHYc0vLg2p1Xnart/IOS-%D1%81%D1%82%D0%B0%D0%B6%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B0?node-id=45%3A77&t=N4eUtEGJu7LxSAnC-1).
