@@ -12,6 +12,7 @@ final class MainViewHeader: UIView {
     // MARK: - constant
     private enum Constant {
         static let padding: CGFloat = .mplusSize
+        static let headerViewRadius: CGFloat = 32
         static let titleLabelFont = Resources.Fonts.sfProDisplayBold(with: .lSize)
     }
 
@@ -31,7 +32,10 @@ final class MainViewHeader: UIView {
     // MARK: - flow funcs
     private func configure() {
         addSubViews()
-        setConstraints()
+
+        layer.cornerRadius = Constant.headerViewRadius
+        layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        create(backgroundColor: Color.mainColor)
 
         titleLabel.textAlignment = .left
         titleLabel.font = Constant.titleLabelFont

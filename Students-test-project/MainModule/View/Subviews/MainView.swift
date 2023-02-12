@@ -12,7 +12,6 @@ final class MainView: UIView {
     // MARK: - constant
     private enum Constant {
         static let headerViewHeight: CGFloat = 56
-        static let headerViewRadius: CGFloat = 32
         static let firstDescriptionViewHeight: CGFloat = 84
         static let secondDescriptionViewHeight: CGFloat = 64
         static let firstCollectionHeight: CGFloat = .minBtn
@@ -41,8 +40,7 @@ final class MainView: UIView {
     // MARK: - flow funcs
     private func configure() {
         addSubViews()
-        setConstraints()
-        configureHeaderView()
+//        configureHeaderView()
         configureDescriptionView()
         configureCollectionView()
     }
@@ -53,12 +51,6 @@ final class MainView: UIView {
         addSubview(secondDescriptionView)
         addSubview(firstCollectionView)
         addSubview(secondCollectionView)
-    }
-
-    private func configureHeaderView() {
-        headerView.layer.cornerRadius = Constant.headerViewRadius
-        headerView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        headerView.create(backgroundColor: Color.mainColor)
     }
 
     private func configureDescriptionView() {

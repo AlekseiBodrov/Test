@@ -31,7 +31,6 @@ final class MainDescriptionView: UIView {
     // MARK: - flow funcs
     private func configure() {
         addSubview(titleLabel)
-        setConstraints()
 
         titleLabel.textAlignment = .left
         titleLabel.font = Constant.titleLabelFont

@@ -76,7 +76,7 @@ extension MainHorizontalMenuView {
         collection.register(MainCollectionViewCell.self, forCellWithReuseIdentifier: MainCollectionViewCell.identifier)
     }
 
-    private func setConstraints() {
+    func setConstraints() {
         NSLayoutConstraint.activate([
             collection.topAnchor.constraint(equalTo: topAnchor),
             collection.bottomAnchor.constraint(equalTo: bottomAnchor),

@@ -24,7 +24,16 @@ final class MainViewController: UIViewController {
     }
 
     // MARK: - property
-    private let scrollView = UIScrollView()
+    private lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.create(backgroundColor: Color.mainColor)
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.contentInsetAdjustmentBehavior = .never
+        scrollView.delegate = self
+        return scrollView
+    }()
+
     private let baseView = UIView()
     private let backgroundImageView = UIImageView()
     private let mainView = MainView()
@@ -38,15 +47,26 @@ final class MainViewController: UIViewController {
     // MARK: - life cycle funcs
     override func viewDidLoad() {
         super.viewDidLoad()
-        addSubViews()
 
+        addSubViews()
         configure()
 
     }
+    override func viewWillLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        self.setConstraints()
+        mainView.setConstraints()
+        mainView.headerView.setConstraints()
+        mainView.firstDescriptionView.setConstraints()
+        mainView.firstCollectionView.setConstraints()
+        mainView.secondDescriptionView.setConstraints()
+        mainView.secondCollectionView.setConstraints()
+    }
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         safeAriaHeight = view.frame.size.height - view.safeAreaInsets.top
-        setConstraints()
     }
 
     // MARK: - flow funcs
@@ -73,12 +93,6 @@ final class MainViewController: UIViewController {
 
         baseView.create(backgroundColor: Color.mainColor)
         mainView.create(backgroundColor: .clear)
-
-        scrollView.create(backgroundColor: Color.mainColor)
-        scrollView.showsVerticalScrollIndicator = false
-        scrollView.showsHorizontalScrollIndicator = false
-        scrollView.contentInsetAdjustmentBehavior = .never
-        scrollView.delegate = self
     }
 
     private func configureImageView() {
