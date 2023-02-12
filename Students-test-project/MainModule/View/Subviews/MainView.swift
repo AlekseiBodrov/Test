@@ -13,20 +13,20 @@ final class MainView: UIView {
     private enum Constant {
         static let headerViewHeight: CGFloat = 56
         static let headerViewRadius: CGFloat = 32
-        static let descriptionView1Height: CGFloat = 84
-        static let descriptionView2Height: CGFloat = 64
-        static let collection1Height: CGFloat = .minBtn
-        static let collection2Height: CGFloat = 100
+        static let firstDescriptionViewHeight: CGFloat = 84
+        static let secondDescriptionViewHeight: CGFloat = 64
+        static let firstCollectionHeight: CGFloat = .minBtn
+        static let secondCollectionHeight: CGFloat = 100
     }
 
     //MARK: - property
     lazy var headerView = MainViewHeader()
 
-    lazy var descriptionView1 = MainDescriptionView()
-    lazy var collectionView1 = MainHorizontalMenuView()
+    lazy var firstDescriptionView = MainDescriptionView()
+    lazy var firstCollectionView = MainHorizontalMenuView()
 
-    lazy var descriptionView2 = MainDescriptionView()
-    lazy var collectionView2 = MainHorizontalMenuView()
+    lazy var secondDescriptionView = MainDescriptionView()
+    lazy var secondCollectionView = MainHorizontalMenuView()
 
     // MARK: - init
     override init(frame: CGRect) {
@@ -41,10 +41,8 @@ final class MainView: UIView {
     //MARK: - flow funcs
     private func configure() {
         configureHeaderView()
-        configureDescriptionView1()
-        configureCollectionView1()
-        configureDescriptionView2()
-        configureCollectionView2()
+        configureDescriptionView()
+        configureCollectionView()
     }
 
     private func configureHeaderView() {
@@ -54,24 +52,20 @@ final class MainView: UIView {
         headerView.create(backgroundColor: Color.mainColor)
     }
 
-    private func configureDescriptionView1() {
-        addSubview(descriptionView1)
-        descriptionView1.create(backgroundColor: Color.mainColor)
+    private func configureDescriptionView() {
+        addSubview(firstDescriptionView)
+        addSubview(secondDescriptionView)
+
+        firstDescriptionView.create(backgroundColor: Color.mainColor)
+        secondDescriptionView.create(backgroundColor: Color.mainColor)
     }
 
-    private func configureDescriptionView2() {
-        addSubview(descriptionView2)
-        descriptionView2.create(backgroundColor: Color.mainColor)
-    }
+    private func configureCollectionView() {
+        addSubview(firstCollectionView)
+        addSubview(secondCollectionView)
 
-    private func configureCollectionView1() {
-        addSubview(collectionView1)
-        collectionView1.create(backgroundColor: Color.mainColor)
-    }
-
-    private func configureCollectionView2() {
-        addSubview(collectionView2)
-        collectionView2.create(backgroundColor: Color.mainColor)
+        firstCollectionView.create(backgroundColor: Color.mainColor)
+        secondCollectionView.create(backgroundColor: Color.mainColor)
     }
 
    func setConstraints() {
@@ -81,25 +75,25 @@ final class MainView: UIView {
             headerView.trailingAnchor.constraint(equalTo: trailingAnchor),
             headerView.heightAnchor.constraint(equalToConstant: Constant.headerViewHeight),
 
-            descriptionView1.topAnchor.constraint(equalTo: headerView.bottomAnchor),
-            descriptionView1.leadingAnchor.constraint(equalTo: leadingAnchor),
-            descriptionView1.trailingAnchor.constraint(equalTo: trailingAnchor),
-            descriptionView1.heightAnchor.constraint(equalToConstant: Constant.descriptionView1Height),
+            firstDescriptionView.topAnchor.constraint(equalTo: headerView.bottomAnchor),
+            firstDescriptionView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            firstDescriptionView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            firstDescriptionView.heightAnchor.constraint(equalToConstant: Constant.firstDescriptionViewHeight),
 
-            collectionView1.topAnchor.constraint(equalTo: descriptionView1.bottomAnchor),
-            collectionView1.leadingAnchor.constraint(equalTo: leadingAnchor),
-            collectionView1.trailingAnchor.constraint(equalTo: trailingAnchor),
-            collectionView1.heightAnchor.constraint(equalToConstant: Constant.collection1Height),
+            firstCollectionView.topAnchor.constraint(equalTo: firstDescriptionView.bottomAnchor),
+            firstCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            firstCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            firstCollectionView.heightAnchor.constraint(equalToConstant: Constant.firstCollectionHeight),
 
-            descriptionView2.topAnchor.constraint(equalTo: collectionView1.bottomAnchor),
-            descriptionView2.leadingAnchor.constraint(equalTo: leadingAnchor),
-            descriptionView2.trailingAnchor.constraint(equalTo: trailingAnchor),
-            descriptionView2.heightAnchor.constraint(equalToConstant: Constant.descriptionView2Height),
+            secondDescriptionView.topAnchor.constraint(equalTo: firstCollectionView.bottomAnchor),
+            secondDescriptionView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            secondDescriptionView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            secondDescriptionView.heightAnchor.constraint(equalToConstant: Constant.secondDescriptionViewHeight),
 
-            collectionView2.topAnchor.constraint(equalTo: descriptionView2.bottomAnchor),
-            collectionView2.leadingAnchor.constraint(equalTo: leadingAnchor),
-            collectionView2.trailingAnchor.constraint(equalTo: trailingAnchor),
-            collectionView2.heightAnchor.constraint(equalToConstant: Constant.collection2Height),
+            secondCollectionView.topAnchor.constraint(equalTo: secondDescriptionView.bottomAnchor),
+            secondCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            secondCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            secondCollectionView.heightAnchor.constraint(equalToConstant: Constant.secondCollectionHeight),
         ])
     }
 }

@@ -51,13 +51,7 @@ extension MainCategoriesMenuView: UICollectionViewDelegate, UICollectionViewData
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if categoriesArray[indexPath.item].isSelected {
-            categoriesArray[indexPath.item].isSelected = false
-            collectionView.reloadData()
-        } else {
-            categoriesArray[indexPath.item].isSelected = true
-            collectionView.scrollToItem(at: indexPath, at: .left, animated: true)
-        }
+        selectItem(for: indexPath, collectionView: collectionView)
     }
 }
 
@@ -106,5 +100,15 @@ extension MainCategoriesMenuView {
         let categoryWidth = categoriesArray[indexPath.item].name.size(withAttributes: categoryAttributes).width + .s + .l + .l
         let height = Constant.buttonHeight
         return CGSize(width: categoryWidth, height: height)
+    }
+
+    private func selectItem(for indexPath: IndexPath, collectionView: UICollectionView) {
+        if categoriesArray[indexPath.item].isSelected {
+            categoriesArray[indexPath.item].isSelected = false
+            collectionView.reloadData()
+        } else {
+            categoriesArray[indexPath.item].isSelected = true
+            collectionView.scrollToItem(at: indexPath, at: .left, animated: true)
+        }
     }
 }

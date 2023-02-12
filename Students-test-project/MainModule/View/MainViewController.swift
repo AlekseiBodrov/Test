@@ -54,8 +54,8 @@ final class MainViewController: UIViewController {
         setConstraints()
         mainView.setConstraints()
         mainView.headerView.setConstraints()
-        mainView.descriptionView1.setConstraints()
-        mainView.descriptionView2.setConstraints()
+        mainView.firstDescriptionView.setConstraints()
+        mainView.secondDescriptionView.setConstraints()
     }
     //MARK: - flow funcs
     private func configure() {
@@ -178,16 +178,16 @@ extension MainViewController: PresenterDelegate {
     }
 
     func presentFirstDescription(text: String) {
-        mainView.descriptionView1.setupTitle(with: text)
+        mainView.firstDescriptionView.setupTitle(with: text)
     }
 
     func presentSecondDescription(text: String) {
-        mainView.descriptionView2.setupTitle(with: text)
+        mainView.secondDescriptionView.setupTitle(with: text)
     }
 
     func fetchСategories(category: [Category]) {
-        mainView.collectionView1.categoriesArray = category
-        mainView.collectionView2.categoriesArray = category
+        mainView.firstCollectionView.categoriesArray = category
+        mainView.secondCollectionView.categoriesArray = category
     }
 
     func presentAlert() {
