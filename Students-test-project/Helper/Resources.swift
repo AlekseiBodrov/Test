@@ -6,31 +6,28 @@
 //
 
 import UIKit
-//swiftgen or rswift
+
 enum Resources {
 
     enum Images {
         static let background = "mountains"
     }
 
-    enum String {
+    enum Label {
+        static let titleLabel = "Стажировка в Surf"
+        static let firstDescription = "Работай над реальными задачами под руководством опытного наставника и получи возможность стать частью команды мечты."
+        static let secondDescription = "Получай стипендию, выстраивай удобный график, работай на современном железе."
+    }
 
-        enum Label {
-            static let titleLabel = "Стажировка в Surf"
-            static let firstDescription = "Работай над реальными задачами под руководством опытного наставника и получи возможность стать частью команды мечты."
-            static let secondDescription = "Получай стипендию, выстраивай удобный график, работай на современном железе."
-        }
+    enum BottomView {
+        static let sendButton = "Отправить заявку"
+        static let label = "Хочешь к нам?"
+    }
 
-        enum BottomView {
-            static let sendButton = "Отправить заявку"
-            static let label = "Хочешь к нам?"
-        }
-
-        enum Alert {
-            static let title = "Поздравляем!"
-            static let message = "Ваша заявка успешно отправлена!"
-            static let cancel = "Закрыть"
-        }
+    enum Alert {
+        static let title = "Поздравляем!"
+        static let message = "Ваша заявка успешно отправлена!"
+        static let cancel = "Закрыть"
     }
 
     enum Fonts {

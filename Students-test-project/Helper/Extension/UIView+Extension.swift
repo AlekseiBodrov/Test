@@ -8,13 +8,12 @@
 import UIKit
 
 extension UIView {
-    func rounded(radius: CGFloat = 10){
+    func rounded(radius: CGFloat = 10) {
         self.layer.cornerRadius = radius
     }
 
-    func create(backgroundColor: UIColor){
+    func create(backgroundColor: UIColor) {
         self.backgroundColor = backgroundColor
         self.translatesAutoresizingMaskIntoConstraints = false
     }
 }
-

@@ -9,7 +9,7 @@ import UIKit
 
 final class MainView: UIView {
 
-    //MARK: - constant
+    // MARK: - constant
     private enum Constant {
         static let headerViewHeight: CGFloat = 56
         static let headerViewRadius: CGFloat = 32
@@ -19,7 +19,7 @@ final class MainView: UIView {
         static let secondCollectionHeight: CGFloat = 100
     }
 
-    //MARK: - property
+    // MARK: - property
     lazy var headerView = MainViewHeader()
 
     lazy var firstDescriptionView = MainDescriptionView()
@@ -38,7 +38,7 @@ final class MainView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    //MARK: - flow funcs
+    // MARK: - flow funcs
     private func configure() {
         configureHeaderView()
         configureDescriptionView()
@@ -93,7 +93,7 @@ final class MainView: UIView {
             secondCollectionView.topAnchor.constraint(equalTo: secondDescriptionView.bottomAnchor),
             secondCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             secondCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            secondCollectionView.heightAnchor.constraint(equalToConstant: Constant.secondCollectionHeight),
+            secondCollectionView.heightAnchor.constraint(equalToConstant: Constant.secondCollectionHeight)
         ])
     }
 }

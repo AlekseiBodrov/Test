@@ -9,18 +9,18 @@ import UIKit
 
 final class MainHorizontalCollectionView: UIView {
 
-    //MARK: - constants
+    // MARK: - constants
     enum SizeConstant {
         static let padding: CGFloat = .mplus
         static let fontHeight: CGFloat = .splus
         static let buttonHeight: CGFloat = .minBtn
     }
 
-    //MARK: - property
+    // MARK: - property
     lazy var categoriesArray: [Category] = .init()
     private lazy var collection: UICollectionView = .init()
 
-    //MARK: - life cycle funcs
+    // MARK: - life cycle funcs
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -36,10 +36,12 @@ final class MainHorizontalCollectionView: UIView {
     }
 }
 
-//MARK: - extension UICollectionViewDelegate
-extension MainHorizontalCollectionView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+// MARK: - extension UICollectionViewDelegate
+extension MainHorizontalCollectionView: UICollectionViewDelegate,
+                                            UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
         return sizeForTextLabel(for: indexPath)
     }
 
@@ -47,7 +49,8 @@ extension MainHorizontalCollectionView: UICollectionViewDelegate, UICollectionVi
         return categoriesArray.count
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         return createCell(indexPath: indexPath, collectionView: collectionView)
     }
 
@@ -57,10 +60,10 @@ extension MainHorizontalCollectionView: UICollectionViewDelegate, UICollectionVi
     }
 }
 
-//MARK: - extension
+// MARK: - extension
 extension MainHorizontalCollectionView {
 
-    //MARK: - flow funcs
+    // MARK: - flow funcs
     private func setup() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -86,12 +89,14 @@ extension MainHorizontalCollectionView {
             collection.topAnchor.constraint(equalTo: topAnchor),
             collection.bottomAnchor.constraint(equalTo: bottomAnchor),
             collection.leadingAnchor.constraint(equalTo: leadingAnchor),
-            collection.trailingAnchor.constraint(equalTo: trailingAnchor),
+            collection.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
     }
 
-    private func createCell(indexPath: IndexPath, collectionView: UICollectionView) -> UICollectionViewCell  {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainCollectionViewCell.identifier, for: indexPath) as? MainCollectionViewCell else {return UICollectionViewCell()}
+    private func createCell(indexPath: IndexPath, collectionView: UICollectionView) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainCollectionViewCell.identifier,
+                                                            for: indexPath) as? MainCollectionViewCell else {
+                                                            return UICollectionViewCell()}
         cell.configureLabel(with: categoriesArray[indexPath.item].name)
         return cell
     }
@@ -99,7 +104,8 @@ extension MainHorizontalCollectionView {
     private func sizeForTextLabel(for indexPath: IndexPath) -> CGSize {
         let categoryFont = Resources.Fonts.sfProDisplayMedium(with: .splus)
         let categoryAttributes = [NSAttributedString.Key.font: categoryFont as Any]
-        let categoryWidth = categoriesArray[indexPath.item].name.size(withAttributes: categoryAttributes).width + .l + .l
+        let categoryWidth = categoriesArray[indexPath.item].name.size(
+            withAttributes: categoryAttributes).width + .l + .l
         let height = SizeConstant.buttonHeight
         return CGSize(width: categoryWidth, height: height)
     }

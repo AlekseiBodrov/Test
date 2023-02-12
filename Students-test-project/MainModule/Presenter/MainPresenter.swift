@@ -20,10 +20,10 @@ typealias PresenterDelegate = MainPresenterProtocol
 
 final class MainPresenter {
 
-    //MARK: - delegate
+    // MARK: - delegate
     weak var delegate: PresenterDelegate?
 
-    //MARK: - flow funcs
+    // MARK: - flow funcs
     func setViewDelegate(delegate: PresenterDelegate) {
         self.delegate = delegate
     }
@@ -34,17 +34,17 @@ final class MainPresenter {
     }
 
     func getTitleLabel() {
-        let title = Resources.String.Label.titleLabel
+        let title = Resources.Label.titleLabel
         delegate?.presentTitleLabel(title: title)
     }
 
     func getFirstDescription() {
-        let text = Resources.String.Label.firstDescription
+        let text = Resources.Label.firstDescription
         delegate?.presentFirstDescription(text: text)
     }
 
     func getSecondDescription() {
-        let text = Resources.String.Label.secondDescription
+        let text = Resources.Label.secondDescription
         delegate?.presentSecondDescription(text: text)
     }
 
@@ -52,7 +52,7 @@ final class MainPresenter {
         var categoriesArray: [Category] = []
         for _ in 0...50 {
             Categorys.allCases.forEach {
-                categoriesArray.append(Category(name: $0.rawValue, isSelected: false))
+                categoriesArray.append(Category(name: $0.lacolizedTitle, isSelected: false))
             }
         }
         delegate?.fetchСategories(category: categoriesArray)

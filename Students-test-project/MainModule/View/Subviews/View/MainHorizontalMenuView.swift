@@ -9,17 +9,17 @@ import UIKit
 
 final class MainHorizontalMenuView: UIView {
 
-    //MARK: - constant
+    // MARK: - constant
     enum Constant {
-        static let padding: CGFloat = .mplus
+        static let padding: CGFloat = .mplusSize
         static let buttonHeight: CGFloat = .minBtn
     }
 
-    //MARK: - property
+    // MARK: - property
     lazy var categoriesArray: [Category] = .init()
     private lazy var collection: UICollectionView = .init()
 
-    //MARK: - life cycle funcs
+    // MARK: - life cycle funcs
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -35,10 +35,13 @@ final class MainHorizontalMenuView: UIView {
     }
 }
 
-//MARK: - extension UICollectionViewDelegate
-extension MainHorizontalMenuView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+// MARK: - extension UICollectionViewDelegate
+extension MainHorizontalMenuView: UICollectionViewDelegate,
+                                    UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
         return sizeForTextLabel(for: indexPath)
     }
 
@@ -46,7 +49,8 @@ extension MainHorizontalMenuView: UICollectionViewDelegate, UICollectionViewData
         return categoriesArray.count
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         return createCell(indexPath: indexPath, collectionView: collectionView)
     }
 
@@ -55,10 +59,10 @@ extension MainHorizontalMenuView: UICollectionViewDelegate, UICollectionViewData
     }
 }
 
-//MARK: - extension
+// MARK: - extension
 extension MainHorizontalMenuView {
 
-    //MARK: - flow funcs
+    // MARK: - flow funcs
     private func setup() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -82,25 +86,29 @@ extension MainHorizontalMenuView {
         NSLayoutConstraint.activate([
             collection.topAnchor.constraint(equalTo: topAnchor),
             collection.bottomAnchor.constraint(equalTo: bottomAnchor),
-            collection.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .xs),
-            collection.trailingAnchor.constraint(equalTo: trailingAnchor),
+            collection.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .xsSize),
+            collection.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
     }
 
-    private func createCell(indexPath: IndexPath, collectionView: UICollectionView) -> UICollectionViewCell  {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainCollectionViewCell.identifier, for: indexPath) as? MainCollectionViewCell else {return UICollectionViewCell()}
+    private func createCell(indexPath: IndexPath,
+                            collectionView: UICollectionView) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: MainCollectionViewCell.identifier, for: indexPath) as? MainCollectionViewCell else {
+            return UICollectionViewCell()}
         cell.configureLabel(with: categoriesArray[indexPath.item].name)
         return cell
     }
 
     private func sizeForTextLabel(for indexPath: IndexPath) -> CGSize {
-        let categoryFont = Resources.Fonts.sfProDisplayMedium(with: .splus)
+        let categoryFont = Resources.Fonts.sfProDisplayMedium(with: .splusSize)
         let categoryAttributes = [NSAttributedString.Key.font: categoryFont as Any]
-        let categoryWidth = categoriesArray[indexPath.item].name.size(withAttributes: categoryAttributes).width + .s + .l + .l
+        let categoryWidth = categoriesArray[indexPath.item].name.size(
+            withAttributes: categoryAttributes).width + .sSize + .lSize + .lSize
         let height = Constant.buttonHeight
         return CGSize(width: categoryWidth, height: height)
     }
-    
+
     private func selectItem(for indexPath: IndexPath, collectionView: UICollectionView) {
         if categoriesArray[indexPath.item].isSelected {
             categoriesArray[indexPath.item].isSelected = false

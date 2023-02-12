@@ -9,13 +9,13 @@ import UIKit
 
 final class MainViewHeader: UIView {
 
-    //MARK: - constant
+    // MARK: - constant
     private enum Constant {
-        static let padding: CGFloat = .mplus
-        static let titleLabelFont = Resources.Fonts.sfProDisplayBold(with: .l)
+        static let padding: CGFloat = .mplusSize
+        static let titleLabelFont = Resources.Fonts.sfProDisplayBold(with: .lSize)
     }
-    
-    //MARK: - property
+
+    // MARK: - property
     lazy var titleLabel = UILabel()
 
     // MARK: - init
@@ -28,7 +28,7 @@ final class MainViewHeader: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    //MARK: - flow funcs
+    // MARK: - flow funcs
     private func configure() {
         addSubview(titleLabel)
         setConstraints()
@@ -39,12 +39,12 @@ final class MainViewHeader: UIView {
         titleLabel.create(backgroundColor: .clear)
     }
 
-    //MARK: - public
+    // MARK: - public
     func setConstraints() {
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constant.padding),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constant.padding),
-            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
+            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
 

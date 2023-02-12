@@ -8,17 +8,17 @@
 import UIKit
 
 final class MainCollectionViewCell: UICollectionViewCell {
-    //MARK: - static
+    // MARK: - static
     static let identifier = "MainCollectionViewCell"
 
-    //MARK: - constant
+    // MARK: - constant
     private enum Constant {
-        static let radius: CGFloat = .s
-        static let padding: CGFloat = .s
-        static let labelFont = Resources.Fonts.sfProDisplayMedium(with: .splus)
+        static let radius: CGFloat = .sSize
+        static let padding: CGFloat = .sSize
+        static let labelFont = Resources.Fonts.sfProDisplayMedium(with: .splusSize)
     }
 
-    //MARK: - property
+    // MARK: - property
     private lazy var view = UIView()
     private lazy var label = UILabel()
 
@@ -29,7 +29,7 @@ final class MainCollectionViewCell: UICollectionViewCell {
         }
     }
 
-    //MARK: - life cycle funcs
+    // MARK: - life cycle funcs
     private override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -39,7 +39,7 @@ final class MainCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    //MARK: - public
+    // MARK: - public
     func configureLabel(with text: String) {
         label.text = text
     }
@@ -47,7 +47,7 @@ final class MainCollectionViewCell: UICollectionViewCell {
 
 extension MainCollectionViewCell {
 
-    //MARK: - flow funcs
+    // MARK: - flow funcs
     private func configure() {
         addSubview(view)
         view.addSubview(label)
@@ -69,7 +69,7 @@ extension MainCollectionViewCell {
             view.trailingAnchor.constraint(equalTo: trailingAnchor),
 
             label.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            label.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     }
 }

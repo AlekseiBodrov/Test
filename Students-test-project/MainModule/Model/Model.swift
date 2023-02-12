@@ -7,17 +7,32 @@
 
 import Foundation
 
-enum Categorys: String, CaseIterable {
-    case IOS
-    case Android
-    case Design
-    case QA
-    case Flutter
-    case PM
-    case MVP
-    case Frontend
-    case Fullstack
-    case Backend
+enum Categorys: CaseIterable {
+    case ios
+    case android
+    case design
+    case php
+    case flutter
+    case qae
+    case python
+    case frontend
+    case fullstack
+    case backend
+
+    var lacolizedTitle: String {
+        switch self {
+        case .ios: return "IOS"
+        case .android: return "Android"
+        case .design: return "Design"
+        case .php: return "PHP"
+        case .flutter: return "Flutter"
+        case .qae: return "QA"
+        case .python: return "Python"
+        case .frontend: return "Frontend"
+        case .fullstack: return "Fullstack"
+        case .backend: return "Backend"
+        }
+    }
 }
 
 struct Category {

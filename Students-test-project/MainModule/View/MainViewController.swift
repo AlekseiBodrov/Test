@@ -9,22 +9,22 @@ import UIKit
 
 final class MainViewController: UIViewController {
 
-    //MARK: - constant
+    // MARK: - constant
     private enum Constant {
         static let cornerRadius: CGFloat = 32.0
         static let sendButtonCornerRadius: CGFloat = 30
-        static let bottomLabelFont = Resources.Fonts.sfProDisplayRegular(with: .splus)
-        static let sendButtonFont = Resources.Fonts.sfProDisplayMedium(with: .m)
+        static let bottomLabelFont = Resources.Fonts.sfProDisplayRegular(with: .splusSize)
+        static let sendButtonFont = Resources.Fonts.sfProDisplayMedium(with: .mSize)
         static let sendButtonHeight: CGFloat = 60
-        static let bottomLabelHeight: CGFloat = .mplus
+        static let bottomLabelHeight: CGFloat = .mplusSize
         static let screenWidth: CGFloat = UIScreen.main.bounds.size.width
         static var safeAriaHeight: CGFloat = UIViewController().view.safeAreaLayoutGuide.layoutFrame.height
         static let bottomPadding: CGFloat = 50
         static let mainViewTopPadding: CGFloat = 135
-        static let padding: CGFloat = .mplus
+        static let padding: CGFloat = .mplusSize
     }
 
-    //MARK: - property
+    // MARK: - property
     private let scrollView = UIScrollView()
     private let baseView = UIView()
     private let backgroundImageView = UIImageView()
@@ -32,14 +32,9 @@ final class MainViewController: UIViewController {
     private let bottomLabel = UILabel()
     private let sendButton = UIButton()
 
-    private var leading_ImgView: NSLayoutConstraint?
-    private var trailling_ImgView: NSLayoutConstraint?
-    private var top_imgView: NSLayoutConstraint?
-    private var height_ImgView: NSLayoutConstraint?
-
     private var presenter = MainPresenter()
 
-    //MARK: - life cycle funcs
+    // MARK: - life cycle funcs
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
@@ -57,7 +52,7 @@ final class MainViewController: UIViewController {
         mainView.firstDescriptionView.setConstraints()
         mainView.secondDescriptionView.setConstraints()
     }
-    //MARK: - flow funcs
+    // MARK: - flow funcs
     private func configure() {
         addSubViews()
 
@@ -98,18 +93,18 @@ final class MainViewController: UIViewController {
     }
 
     private func configureLabel() {
-        bottomLabel.text = Resources.String.BottomView.label
+        bottomLabel.text = Resources.BottomView.label
         bottomLabel.font = Constant.bottomLabelFont
         bottomLabel.textColor = Color.secondaryTextColor
         bottomLabel.create(backgroundColor: .clear)
 
-        presentTitleLabel(title: Resources.String.Label.titleLabel)
-        presentFirstDescription(text: Resources.String.Label.firstDescription)
-        presentSecondDescription(text: Resources.String.Label.secondDescription)
+        presentTitleLabel(title: Resources.Label.titleLabel)
+        presentFirstDescription(text: Resources.Label.firstDescription)
+        presentSecondDescription(text: Resources.Label.secondDescription)
     }
 
     private func configureButton() {
-        sendButton.setTitle(Resources.String.BottomView.sendButton, for: .normal)
+        sendButton.setTitle(Resources.BottomView.sendButton, for: .normal)
         sendButton.titleLabel?.font = Constant.sendButtonFont
         sendButton.addTarget(self, action: #selector(tuchDetected), for: .touchUpInside)
         sendButton.rounded(radius: Constant.sendButtonCornerRadius)
@@ -147,11 +142,12 @@ final class MainViewController: UIViewController {
             backgroundImageView.trailingAnchor.constraint(equalTo: baseView.trailingAnchor),
             backgroundImageView.widthAnchor.constraint(equalToConstant: Constant.screenWidth),
 
-            mainView.topAnchor.constraint(equalTo: backgroundImageView.bottomAnchor, constant: -Constant.mainViewTopPadding),
+            mainView.topAnchor.constraint(equalTo: backgroundImageView.bottomAnchor,
+                                          constant: -Constant.mainViewTopPadding),
             mainView.leadingAnchor.constraint(equalTo: baseView.leadingAnchor),
             mainView.trailingAnchor.constraint(equalTo: baseView.trailingAnchor),
             mainView.bottomAnchor.constraint(equalTo: baseView.bottomAnchor),
-            mainView.heightAnchor.constraint(equalToConstant: Constant.safeAriaHeight),
+            mainView.heightAnchor.constraint(equalToConstant: Constant.safeAriaHeight)
         ])
 
         NSLayoutConstraint.activate([
@@ -162,12 +158,13 @@ final class MainViewController: UIViewController {
             bottomLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constant.padding),
             bottomLabel.centerYAnchor.constraint(equalTo: sendButton.centerYAnchor),
             bottomLabel.heightAnchor.constraint(equalToConstant: Constant.bottomLabelHeight),
-            bottomLabel.trailingAnchor.constraint(equalTo: sendButton.leadingAnchor, constant: -Constant.padding),
+            bottomLabel.trailingAnchor.constraint(equalTo: sendButton.leadingAnchor,
+                                                  constant: -Constant.padding)
         ])
     }
 }
 
-    //MARK: - PresenterDelegate
+    // MARK: - PresenterDelegate
 extension MainViewController: PresenterDelegate {
     func presentBackgroundImage(with name: String) {
         backgroundImageView.image = UIImage(named: name)
@@ -191,9 +188,9 @@ extension MainViewController: PresenterDelegate {
     }
 
     func presentAlert() {
-        let title = Resources.String.Alert.title
-        let message = Resources.String.Alert.message
-        let cancelTitle = Resources.String.Alert.cancel
+        let title = Resources.Alert.title
+        let message = Resources.Alert.message
+        let cancelTitle = Resources.Alert.cancel
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: cancelTitle, style: .cancel)
         alertController.addAction(cancelAction)
