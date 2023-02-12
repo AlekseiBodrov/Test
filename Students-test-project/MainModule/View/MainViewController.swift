@@ -102,8 +102,14 @@ final class MainViewController: UIViewController {
     private func configureButton() {
         sendButton.setTitle(Resources.BottomView.sendButton, for: .normal)
         sendButton.titleLabel?.font = Constant.sendButtonFont
-        sendButton.addTarget(self, action: #selector(tuchDetected), for: .touchUpInside)
-        sendButton.rounded(radius: Constant.sendButtonCornerRadius)
+        sendButton.setTitleColor(Color.secondaryColor, for: .highlighted)
+        sendButton.setTitleColor(Color.lightSecondaryColor, for: .normal)
+        sendButton.layer.borderColor = Color.secondaryColor.cgColor
+        sendButton.layer.borderWidth = 1
+        sendButton.addTarget(self, action: #selector(tuchDownDetected), for: .touchDown)
+        sendButton.addTarget(self, action: #selector(tuchUpDetected), for: .touchUpInside)
+        sendButton.rounded(radius:
+                            Constant.sendButtonCornerRadius)
         sendButton.create(backgroundColor: Color.secondaryColor)
     }
 
@@ -117,7 +123,12 @@ final class MainViewController: UIViewController {
         presenter.delegate = self
     }
 
-    @objc func tuchDetected() {
+    @objc func tuchDownDetected() {
+        sendButton.backgroundColor = Color.lightSecondaryColor
+    }
+
+    @objc func tuchUpDetected() {
+        sendButton.backgroundColor = Color.secondaryColor
         presentAlert()
     }
 
