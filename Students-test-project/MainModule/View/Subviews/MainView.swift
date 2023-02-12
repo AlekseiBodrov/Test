@@ -40,30 +40,33 @@ final class MainView: UIView {
 
     // MARK: - flow funcs
     private func configure() {
+        addSubViews()
+        setConstraints()
         configureHeaderView()
         configureDescriptionView()
         configureCollectionView()
     }
 
-    private func configureHeaderView() {
+    private func addSubViews() {
         addSubview(headerView)
+        addSubview(firstDescriptionView)
+        addSubview(secondDescriptionView)
+        addSubview(firstCollectionView)
+        addSubview(secondCollectionView)
+    }
+
+    private func configureHeaderView() {
         headerView.layer.cornerRadius = Constant.headerViewRadius
         headerView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         headerView.create(backgroundColor: Color.mainColor)
     }
 
     private func configureDescriptionView() {
-        addSubview(firstDescriptionView)
-        addSubview(secondDescriptionView)
-
         firstDescriptionView.create(backgroundColor: Color.mainColor)
         secondDescriptionView.create(backgroundColor: Color.mainColor)
     }
 
     private func configureCollectionView() {
-        addSubview(firstCollectionView)
-        addSubview(secondCollectionView)
-
         firstCollectionView.create(backgroundColor: Color.mainColor)
         secondCollectionView.create(backgroundColor: Color.mainColor)
     }

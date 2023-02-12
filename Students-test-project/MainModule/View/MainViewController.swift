@@ -37,25 +37,18 @@ final class MainViewController: UIViewController {
     // MARK: - life cycle funcs
     override func viewDidLoad() {
         super.viewDidLoad()
-        configure()
+        addSubViews()
         setConstraints()
+        configure()
+
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         Constant.safeAriaHeight = view.safeAreaLayoutGuide.layoutFrame.height + view.safeAreaInsets.bottom
     }
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        setConstraints()
-        mainView.setConstraints()
-        mainView.headerView.setConstraints()
-        mainView.firstDescriptionView.setConstraints()
-        mainView.secondDescriptionView.setConstraints()
-    }
+
     // MARK: - flow funcs
     private func configure() {
-        addSubViews()
-
         configureView()
         configureImageView()
         configureLabel()

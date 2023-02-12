@@ -30,13 +30,17 @@ final class MainViewHeader: UIView {
 
     // MARK: - flow funcs
     private func configure() {
-        addSubview(titleLabel)
+        addSubViews()
         setConstraints()
 
         titleLabel.textAlignment = .left
         titleLabel.font = Constant.titleLabelFont
         titleLabel.textColor = Color.secondaryColor
         titleLabel.create(backgroundColor: .clear)
+    }
+
+    private func addSubViews() {
+        addSubview(titleLabel)
     }
 
     // MARK: - public

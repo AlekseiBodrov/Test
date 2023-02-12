@@ -64,13 +64,7 @@ extension MainHorizontalMenuView {
 
     // MARK: - flow funcs
     private func setup() {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        layout.minimumLineSpacing = 0
-        layout.minimumInteritemSpacing = 0
-        layout.sectionInset = UIEdgeInsets(top: 0, left: Constant.padding, bottom: 0, right: Constant.padding)
-        collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
-
+        collectionLayout()
         addSubview(collection)
         setConstraints()
 
@@ -117,5 +111,14 @@ extension MainHorizontalMenuView {
             categoriesArray[indexPath.item].isSelected = true
             collectionView.scrollToItem(at: indexPath, at: .left, animated: true)
         }
+    }
+
+    private func collectionLayout() {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 0
+        layout.sectionInset = UIEdgeInsets(top: 0, left: Constant.padding, bottom: 0, right: Constant.padding)
+        collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
     }
 }
