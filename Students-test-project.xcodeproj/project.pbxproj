@@ -241,8 +241,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D7F18C91298D2A6400695AE1 /* Build configuration list for PBXNativeTarget "Students-test-project" */;
 			buildPhases = (
-				D7CBA5112999130B00BE92E2 /* ShellScript */,
 				93BABAC8C576E59EAF5154CA /* [CP] Check Pods Manifest.lock */,
+				D7CBA5112999130B00BE92E2 /* ShellScript */,
 				D7F18C79298D2A6100695AE1 /* Sources */,
 				D7F18C7A298D2A6100695AE1 /* Frameworks */,
 				D7F18C7B298D2A6100695AE1 /* Resources */,

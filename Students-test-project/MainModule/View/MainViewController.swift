@@ -18,7 +18,6 @@ final class MainViewController: UIViewController {
         static let sendButtonHeight: CGFloat = 60
         static let bottomLabelHeight: CGFloat = .mplusSize
         static let screenWidth: CGFloat = UIScreen.main.bounds.size.width
-        static var safeAriaHeight: CGFloat = UIViewController().view.safeAreaLayoutGuide.layoutFrame.height
         static let bottomPadding: CGFloat = 50
         static let mainViewTopPadding: CGFloat = 135
         static let padding: CGFloat = .mplusSize
@@ -32,19 +31,22 @@ final class MainViewController: UIViewController {
     private let bottomLabel = UILabel()
     private let sendButton = UIButton()
 
+    private var safeAriaHeight: CGFloat?
+
     private var presenter = MainPresenter()
 
     // MARK: - life cycle funcs
     override func viewDidLoad() {
         super.viewDidLoad()
         addSubViews()
-        setConstraints()
+
         configure()
 
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        Constant.safeAriaHeight = view.safeAreaLayoutGuide.layoutFrame.height + view.safeAreaInsets.bottom
+        safeAriaHeight = view.frame.size.height - view.safeAreaInsets.top
+        setConstraints()
     }
 
     // MARK: - flow funcs
@@ -58,8 +60,9 @@ final class MainViewController: UIViewController {
 
     private func addSubViews() {
         view.addSubview(scrollView)
-        view.addSubview(bottomLabel)
         view.addSubview(sendButton)
+        view.addSubview(bottomLabel)
+
         scrollView.addSubview(baseView)
         baseView.addSubview(backgroundImageView)
         baseView.addSubview(mainView)
@@ -140,7 +143,8 @@ final class MainViewController: UIViewController {
             mainView.leadingAnchor.constraint(equalTo: baseView.leadingAnchor),
             mainView.trailingAnchor.constraint(equalTo: baseView.trailingAnchor),
             mainView.bottomAnchor.constraint(equalTo: baseView.bottomAnchor),
-            mainView.heightAnchor.constraint(equalToConstant: Constant.safeAriaHeight)
+            mainView.heightAnchor.constraint(equalToConstant:
+                                                safeAriaHeight ?? view.frame.height )
         ])
 
         NSLayoutConstraint.activate([
