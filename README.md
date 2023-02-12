@@ -1,4 +1,5 @@
 # Test project
+![Главный экран](./presentation/iPhoneSE.gif)
 ## Оглавление
 - **[Краткое описание](#Basic)**
 - **[Презентация](#Presentation)**
