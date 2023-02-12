@@ -26,7 +26,7 @@ final class MainView: UIView {
     lazy var collectionView1 = MainHorizontalMenuView()
 
     lazy var descriptionView2 = MainDescriptionView()
-    lazy var collectionView2 = MainCategoriesMenuView()
+    lazy var collectionView2 = MainHorizontalMenuView()
 
     // MARK: - init
     override init(frame: CGRect) {

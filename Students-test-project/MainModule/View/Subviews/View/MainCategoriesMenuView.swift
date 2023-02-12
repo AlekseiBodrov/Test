@@ -51,8 +51,13 @@ extension MainCategoriesMenuView: UICollectionViewDelegate, UICollectionViewData
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        categoriesArray[indexPath.item].isSelected = true
-        collectionView.scrollToItem(at: indexPath, at: .left, animated: true)
+        if categoriesArray[indexPath.item].isSelected {
+            categoriesArray[indexPath.item].isSelected = false
+            collectionView.reloadData()
+        } else {
+            categoriesArray[indexPath.item].isSelected = true
+            collectionView.scrollToItem(at: indexPath, at: .left, animated: true)
+        }
     }
 }
 
